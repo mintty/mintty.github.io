@@ -1,0 +1,59 @@
+Mintty is a [terminal emulator](http://en.wikipedia.org/wiki/Terminal_emulator) 
+for [Cygwin](http://www.cygwin.com) and [MSYS](http://www.mingw.org/wiki/MSYS).
+In Cygwin, it is installed as the default "Cygwin Terminal".
+In MSYS, the mintty package can be installed with the command "mingw-get install mintty".
+<p>
+Features include:
+<ul>
+  <li> [Xterm](http://invisible-island.net/xterm)-compatible terminal emulation.
+  <li> Native Windows user interface with a simple options dialog.
+  <li> Easy copy & paste.
+  <li> Drag & drop of text, files and folders.
+  <li> Ability to open files and URLs with Ctrl+click.
+  <li> Comprehensive character encoding support, including [UTF-8](http://www.utf-8.com).
+  <li> Wide character display and Windows [IME](http://en.wikipedia.org/wiki/Input_method_editor) support.
+  <li> Window transparency, including glass effect.
+  <li> 256 colours.
+  <li> Fullscreen mode.
+  <li> Options stored in a text file. No registry entries.
+  <li> Small program size and quick scrolling.
+</ul>
+<p>
+Mintty works on all Windows versions from Windows 2000 onwards. 
+Similarly to other Cygwin/MSYS terminals based on 
+[pseudo terminal](http://en.wikipedia.org/wiki/Pseudo_terminal) ("pty") devices, however, 
+mintty is not a full replacement for the Windows Console window 
+(by default running the Windows Command Processor / command prompt / cmd.exe).
+While native console programs with simple text output usually work fine, 
+interactive programs often have 
+[problems](https://github.com/mintty/mintty/issues/56), 
+although sometimes there are workarounds.
+<p>
+The Cygwin package ships with a manual page that can be accessed with _[man mintty](mintty.html)_.
+Invoking mintty with the _--help_ option shows a summary of available command line options.
+[Keycodes](Keycodes.md), [control sequences](CtrlSeqs.md) and some random [tips](Tips.md) can be found on the [wiki](https://github.com/mintty/mintty/wiki).
+
+<h3>Bugs</h3>
+Please report bugs or suggest enhancements via the [issue tracker](https://github.com/mintty/mintty/issues).
+General Cygwin questions should be sent to the [Cygwin mailing list](mailto:cygwin@cygwin.org), 
+preferably after [subscribing the list](https://cygwin.com/cygwin/lists.html#subscribe-unsubscribe).
+<br>
+<b>Mind!</b> Before reporting an issue about character interaction with an application, 
+please check the issue also with at least one other terminal (xterm, urxvt), 
+and maybe the Cygwin Console.
+
+<h3>Contribution</h3>
+If you consider to suggest a patch or contribute to mintty otherwise, 
+discuss your proposal in an issue first, or contact the maintainer.
+<br>
+<b>Repository policy:</b> No unsolicited pull requests!
+
+<h3>History</h3>
+Mintty is based on code from [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) [0.60](http://the.earth.li/~sgtatham/putty/0.60/putty-src.zip) by Simon Tatham and [team](http://www.chiark.greenend.org.uk/~sgtatham/putty/team.html).
+The program icon comes from [KDE's Konsole](http://konsole.kde.org).
+Mintty ties directly into Cygwin/MSYS and leaves out PuTTY's networking functionality, 
+which is provided by packages such as [openssh](http://www.openssh.com) and [inetutils](http://www.gnu.org/software/inetutils) instead.
+A number of [PuTTY issues](PuttyIssues.md) have been addressed.
+<p>
+<img alt="Mintty help screen shot" src=mintty.png>
+<img alt="Mintty options screen shot" src=mintty-options.png>
