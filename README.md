@@ -1,1 +1,0 @@
-# mintty.github.io
