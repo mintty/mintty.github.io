@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Jul  1 17:30:51 2015 -->
+<!-- CreationDate: Thu Aug  6 18:05:53 2015 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -153,7 +153,9 @@ ScrollbackLines=1000</tt>.</p>
 <i>X</i><b>,</b><i>Y</i></p>
 
 <p style="margin-left:22%;">Open the window with its top
-left corner at the specified coordinates.</p>
+left corner at the specified coordinates. Instead of
+coordinates, &quot;centre&quot; or &quot;center&quot; can be
+specified.</p>
 
 <p style="margin-left:11%;"><b>-s</b>, <b>--size</b>
 <i>COLS</i><b>,</b><i>ROWS</i></p>
@@ -176,6 +178,13 @@ permanent window title. The title is not changeable by
 control sequences. This feature is only available on the
 command line.</p>
 
+<p style="margin-left:11%;"><b>-B</b>, <b>--Border
+frame</b>|<b>void</b></p>
+
+<p style="margin-left:22%;">Suppress window title, display
+only a frame or no border. This feature is only available on
+the command line.</p>
+
 <p style="margin-left:11%;"><b>-u</b>, <b>--utmp</b></p>
 
 <p style="margin-left:22%;">Create a utmp entry.</p>
@@ -192,6 +201,15 @@ normal, minimised, maximised, full screen, or hidden.</p>
 class name of the main window. This allows scripting tools
 to distinguish different mintty instances. The default is
 &quot;mintty&quot;.</p>
+
+<p style="margin-left:11%;"><b>-d</b>,
+<b>--nodaemon</b></p>
+
+<p style="margin-left:22%;">Do not apply
+&quot;daemonizing&quot;. By default, mintty tries to detach
+itself from the invoking terminal in order to avoid disabled
+signal reception, and when cloning the window (Alt-F2) in
+order to avoid a remaining zombie process.</p>
 
 <p style="margin-left:11%;"><b>-H</b>, <b>--help</b></p>
 
@@ -288,13 +306,27 @@ zoom</b> <br>
 The font size can be increased or decreased using the
 keyboard shortcuts <b>Ctrl+plus</b> and <b>Ctrl+minus</b>,
 or by holding <b>Ctrl</b> while rolling the mousewheel.
-<b>Ctrl+zero</b> returns the font size to the default.</p>
+<b>Ctrl+zero</b> or <b>Ctrl+middle-mouse click</b> returns
+the font size to the default. If Shift is also held while
+resizing, the window will be resized to scale together with
+the font, keeping the terminal character size if possible.
+Zooming by keyboard or mouse can be disabled, respectively,
+with options ZoomShortcuts=no or ZoomMouse=no.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Drag
+resize</b> <br>
+The usual windows function to drag on the window border
+resizes the terminal. If Shift is also held while resizing,
+the font will be scaled along with the resizing. Note that
+due to the different height/width factors, this is not a
+precise operation.</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Full
 screen</b> <br>
 Full screen mode can be toggled using either the <b>Full
 Screen</b> command in the menu or either of the
-<b>Alt+Enter</b> and <b>Alt+F11</b> keyboard shortcuts.</p>
+<b>Alt+Enter</b> and <b>Alt+F11</b> keyboard shortcuts, or
+the generic window title functions.</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Default
 size</b> <br>
@@ -416,8 +448,14 @@ Scrollback</b></p>
 <b>Alt+F2</b>: New (clone) <br>
 &minus; <b>Alt+F4</b>: Close <br>
 &minus; <b>Alt+F8</b>: Reset <br>
-&minus; <b>Alt+F10</b>: Default size <br>
-&minus; <b>Alt+F11</b> or <b>Alt+Enter</b>: Full screen <br>
+&minus; <b>Alt+F10</b>: Default terminal size (rows/columns)
+<br>
+&minus; <b>Alt+F11</b> or <b>Alt+Enter</b>: Toggle full
+screen <br>
+&minus; <b>Shift+Alt+F11</b> or <b>Shift+Alt+Enter</b>:
+Toggle full screen and zoom font (Note that due to the
+different height/width factors, this is not a precise
+operation) <br>
 &minus; <b>Alt+F12</b>: Flip screen <br>
 &minus; <b>Alt+Space</b>: Window menu <br>
 &minus; <b>Ctrl+Tab</b>: Next window <br>
@@ -426,8 +464,11 @@ Scrollback</b></p>
 <p style="margin-left:11%;"><b>Font zoom</b></p>
 
 <p style="margin-left:22%; margin-top: 1em">&minus;
-<b>Ctrl+plus</b>: Zoom in <br>
-&minus; <b>Ctrl+minus</b>: Zoom out <br>
+<b>Ctrl+plus</b>: Zoom font in <br>
+&minus; <b>Ctrl+minus</b>: Zoom font out <br>
+&minus; <b>Ctrl+Shift+plus</b>: Zoom font and window in <br>
+&minus; <b>Ctrl+Shift+minus</b>: Zoom font and window out
+<br>
 &minus; <b>Ctrl+zero</b>: Back to configured font size</p>
 
 <p style="margin-left:11%;"><b>Ctrl+Shift+letter
@@ -444,8 +485,10 @@ can be enabled on the Keys pane of the options dialog.</p>
 &minus; <b>Ctrl+Shift+N</b>: New <br>
 &minus; <b>Ctrl+Shift+W</b>: Close <br>
 &minus; <b>Ctrl+Shift+R</b>: Reset <br>
-&minus; <b>Ctrl+Shift+D</b>: Default size <br>
-&minus; <b>Ctrl+Shift+F</b>: Full screen <br>
+&minus; <b>Ctrl+Shift+D</b>: Default terminal size
+(rows/columns) <br>
+&minus; <b>Ctrl+Shift+F</b>: Full screen (not zooming font
+despite Shift) <br>
 &minus; <b>Ctrl+Shift+S</b>: Flip screen</p>
 
 <h2>CONFIGURATION
@@ -668,13 +711,15 @@ Backspace sends ^H</b> (BackspaceSendsBS=no)</p>
 <b>^?</b> (ASCII DEL) as the keycode for the backspace key.
 If this option is enabled, <b>^H</b> is sent instead. This
 also changes the <b>Ctrl+Backspace</b> code from <b>^_</b>
-to <b>^?</b>.</p>
+to <b>^?</b>. (Corresponds to the xterm BackarrowKey
+resource.)</p>
 
 <p style="margin-left:11%;">(DeleteSendsDEL=no)</p>
 
 <p style="margin-left:22%;">By default, mintty sends VT100
 Remove as the keycode for the keypad Del key. If this option
-is set =true, <b>^?</b> (ASCII DEL) is sent instead.</p>
+is enabled, <b>^?</b> (ASCII DEL) is sent instead.
+(Corresponds to the xterm DeleteIsDEL resource.)</p>
 
 <p style="margin-left:11%;"><b>Ctrl+LeftAlt is AltGr</b>
 (CtrlAltIsAltGr=no)</p>
@@ -814,6 +859,12 @@ to <b>Paste</b>, the middle button extends the selected
 region instead of pasting the clipboard. If it is set to
 <b>Extend</b>, a left click with <b>Shift</b> pressed pastes
 the clipboard instead of extending the selection.</p>
+
+<p style="margin-left:11%;"><b>Mouse zooming</b>
+(ZoomMouse=yes)</p>
+
+<p style="margin-left:22%;">Enabling font zooming with
+<b>Ctrl+mouse-wheel/middle-mouse-click</b>.</p>
 
 <p style="margin-left:11%;"><b>Default click target</b>
 (ClicksTargetApp=yes)</p>
@@ -1029,7 +1080,9 @@ processes on close</b> (ConfirmExit=yes)</p>
 confirmation when the close button or <i>Alt+F4</i> is
 pressed and the command invoked by mintty still has child
 processes. This is intended to help avoid closing programs
-accidentally.</p>
+accidentally. If possible, mintty also displays a list of
+running child processes, using the procps command if
+installed, or the ps command.</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Command
 line</b> <br>
@@ -1238,6 +1291,24 @@ used as well.</p>
 &minus; <b>BoldCyan</b>=64,255,255 <br>
 &minus; <b>BoldWhite</b>=255,255,255</p>
 
+<p style="margin-left:11%;"><b>Write if exited</b>
+(ExitWrite=no)</p>
+
+<p style="margin-left:22%;">Together with a hold option
+that keeps the terminal open after its child process
+terminated, this option always writes an exit indication to
+the screen. By default, only an error exit code is
+displayed.</p>
+
+<p style="margin-left:11%;"><b>Change title if exited</b>
+(ExitTitle=)</p>
+
+<p style="margin-left:22%;">Together with a hold option
+that keeps the terminal open after its child process
+terminated, this option prefixes the window title with its
+string, for example -o ExitTitle=&quot;TERMINATED: &quot; or
+(in minttyrc) ExitTitle=TERMINATED: .</p>
+
 <h2>LIMITATIONS
 <a name="LIMITATIONS"></a>
 </h2>
@@ -1270,7 +1341,7 @@ xterm&rsquo;s keyboard modes, only the default PC-style and
 VT220-style are available. 8-bit control characters are not
 supported, nor are ISO2022 character sets. There is no
 Tektronix 4014 emulation. Mouse highlighting mode is not
-implemeted.</p>
+implemented.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The majority of
 xterm&rsquo;s many control sequences is implemented, but
