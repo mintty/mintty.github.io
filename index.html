@@ -43,7 +43,7 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
   <li> …
 </ul>
 
-<h4>Compatibility</h4>
+<a name=compatibility><h4>Compatibility</h4></a>
 Mintty works on all Windows versions from Windows 2000 onwards. 
 Similarly to other Cygwin/MSYS terminals based on 
 <a href="http://en.wikipedia.org/wiki/Pseudo_terminal">pseudo terminal</a> ("pty") devices, however, 
@@ -53,6 +53,10 @@ While native console programs with simple text output usually work fine,
 interactive programs often have 
 <a href="https://github.com/mintty/mintty/issues/56">problems</a>, 
 although sometimes there are workarounds.
+See the Wiki section about 
+<a href=https://github.com/mintty/mintty/wiki/Tips#inputoutput-interaction-with-alien-programs>
+Input/Output interaction</a> for hints, especially on the 
+<a target=winpty href=https://github.com/rprichard/winpty>winpty</a> wrapper.
 
 <p><table width=100%><tr><td height=14 background=floline.gif></table>
 
@@ -102,6 +106,7 @@ before June, 2015, have been migrated here.
 <li><b>Mind!</b> Before reporting an issue about character interaction with an application, 
 please check the issue also with at least one other terminal (xterm, urxvt), 
 and maybe the Cygwin Console.
+<br>See also the hint in <a href=#compatibility>Compatibility</a> above.
 </ul>
 
 <h4>Contribution</h4>
