@@ -19,30 +19,46 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
 
 <h3>Features</h3>
 <img align=right src=mintty-logo.svg>
-<ul>
-  <li> <a href="http://invisible-island.net/xterm">Xterm</a>-compatible terminal emulation.
+<dt><i>Terminal display features</i></dt>
+  <ul>
+  <li> <a href="http://invisible-island.net/xterm">Xterm</a>-compatible terminal emulation, coverage of DEC VT300 series terminal features and more.
   <li> 256 colours and True-Colour support.
-  <li> Comprehensive character encoding support, including <a href="http://www.utf-8.com">UTF-8</a>.
-  <li> Character composition with full Unicode support, using dead keys and Compose key.
-  <li> Wide character display and Windows <a href="http://en.wikipedia.org/wiki/Input_method_editor">IME</a> support.
+  <li> Comprehensive character encoding support, including <a href="http://www.utf-8.com">UTF-8</a> and wide character display.
+  <li> Rich character attributes support, including italic, doubly underline, overline, strikeout, rapid blinking.
+  <li> Alternative fonts: simultaneous display of multiple fonts.
   <li> <a href=#sixel>SIXEL</a> graphics display support.
-  <li> Fullscreen mode.
-<dl><dd>
+  <li> <a href=#emoji>Emoji</a> support.
+  </ul>
+<dt><i>Terminal input and interaction features</i></dt>
+  <ul>
+  <li> Character composition with full Unicode support, using dead keys and Compose key.
+  <li> Windows <a href="http://en.wikipedia.org/wiki/Input_method_editor">IME</a> support.
+  <li> Support for all relevant mouse modes, including pixel-grained DEC locator mode.
   <li> Easy copy & paste.
   <li> Drag & drop of text, files and folders.
   <li> Ability to open files and URLs with Ctrl+click.
-<dl><dd>
+  <li> Small program size and quick scrolling.
+  </ul>
+<dt><i>Window handling features and desktop integration</i></dt>
+  <ul>
   <li> Colour schemes / Theme file support.
-  <li> Alternative fonts: simultaneous display of multiple fonts.
+  <li> Virtual Tabs / session switcher and launcher.
+  <li> Taskbar tasks (“jump list”) configuration.
+  <li> Flexible fullscreen, fullsize and border options.
+  <li> Screen and scrollback buffer search.
   <li> User interface language localization support.
   <li> Window transparency, including glass effect.
-<dl><dd>
+  <li> Multiple monitor support, changing DPI support.
+  </ul>
+<dt><i>Configuration features and system support</i></dt>
+  <ul>
   <li> Native Windows user interface with a simple <a href=#options>options dialog</a>.
+  <li> Flexible configuration and resource folder options.
   <li> Options stored in a text file. No registry entries.
-<dl><dd>
-  <li> Small program size and quick scrolling.
-  <li> …
-</ul>
+  <li> Switchable terminal logging, switchable character information.
+  <li> Running in Cygwin, MSYS(2), midipix. Also hosting WSL.
+  <li> Running on Windows XP, Windows 7, Windows 10.
+  </ul>
 
 <a name=compatibility><h4>Compatibility</h4></a>
 Mintty works on all Windows versions from Windows 2000 onwards. 
@@ -167,6 +183,14 @@ A number of PuTTY issues have been addressed (see Wiki).
 <tr valign=top><td>
 <h4>Fancy feature: alternative fonts as character attributes:</h4>
 <td><img src=mintty-alternative-fonts.png>
+</table>
+
+<a name=emoji>
+<p>
+<table>
+<tr valign=top><td>
+<h4>Emojis:</h4>
+<td><img src=mintty-emojis.png>
 </table>
 
 </body>
