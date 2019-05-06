@@ -22,8 +22,9 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
 <dt><i>Terminal display features</i></dt>
   <ul>
   <li> <a href="http://invisible-island.net/xterm">Xterm</a>-compatible terminal emulation, coverage of DEC VT300 series terminal features and more.
-  <li> 256 colours and True-Colour support.
+  <li> 256 colours and True-Colour support, optional CMYK colour specification.
   <li> Full Unicode support, comprehensive character encoding support and wide character handling.
+  <li> Bidirectional rendering, flexible bidi controls.
   <li> Full character attributes support, including italic, underline styles and colours, overline, strikeout, rapid blinking.
   <li> Alternative fonts: simultaneous display of multiple fonts.
   <li> <a href=#sixel>SIXEL</a> graphics display support.
@@ -33,28 +34,32 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
   <ul>
   <li> Character composition with full Unicode support, using dead keys and Compose key.
   <li> Windows <a href="http://en.wikipedia.org/wiki/Input_method_editor">IME</a> support.
+  <li> Keyboard workarounds for certain buggy virtual keyboards.
   <li> Support for all relevant mouse modes, including pixel-grained DEC locator mode.
+  <li> Text selection with mouse or keyboard.
   <li> Easy copy & paste.
   <li> Drag & drop of text, files and folders.
   <li> Elastic mouse text selection.
-  <li> Ability to open files and URLs with Ctrl+click.
+  <li> Ability to open files and URLs with Ctrl+click, explicit hyperlinks.
   <li> Fast rendering and scrolling.
+  <li> HTML export and clipboard format support.
   </ul>
 <dt><i>Window handling features and desktop integration</i></dt>
   <ul>
   <li> Colour schemes / Theme file support.
   <li> <a href=#background>Background</a> texture and image support.
   <li> Virtual Tabs / session switcher and launcher.
-  <li> Taskbar tasks (“jump list”) configuration.
+  <li> Taskbar tasks (“jump list”) configuration. Task grouping configuration.
   <li> Flexible fullscreen, fullsize and border options.
   <li> Screen and scrollback buffer search.
-  <li> User interface language localization support.
   <li> Window transparency, including glass effect.
   <li> Multiple monitor support, changing DPI support.
   </ul>
 <dt><i>Configuration features and system support</i></dt>
   <ul>
   <li> Native Windows user interface with a lean <a href=#options>options dialog</a>.
+  <li> User interface language localization support.
+  <li> User-defined key shortcuts and menu functions.
   <li> Flexible configuration and resource folder options.
   <li> Options stored in a text file. No registry entries.
   <li> Switchable terminal logging, switchable character information.
@@ -110,6 +115,13 @@ for older packages.
 <br>
 The <a href=https://github.com/mintty/mintty/archive/master.zip>
 current snapshot download</a>.
+
+<p><table width=100%><tr><td height=14 background=floline.gif></table>
+
+<h3>Donation</h3>
+
+If you feel like you'd like to donate for appreciation of mintty, 
+the <a href=donate.html>donation</a> form offers an opportunity.
 
 <p><table width=100%><tr><td height=14 background=floline.gif></table>
 
@@ -221,5 +233,7 @@ A number of PuTTY issues have been addressed (see Wiki).
          alt="Mintty with texture background"
          title="background since mintty 2.9.0">
 </table>
+
+<p><table width=100%><tr><td height=14 background=floline.gif></table>
 
 </body>
