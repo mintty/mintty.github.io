@@ -5,9 +5,42 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="shortcut icon" href="terminal-16.png" />
 <title>Mintty — Cygwin Terminal emulator</title>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
+<style>
+hr {
+	display: none;
+	width: 100%;
+	height: 13px;
+	background-image: url(floline.gif);
+	xbackground: #00FF80;
+	border: none;
+}
+h3, h4 {
+	font-family: Ubuntu Mono;
+	padding: 1;
+	padding-left: 4;
+	color: black;
+	background: #80FFC0;
+}
+h3 {
+	background: black;
+	color: #FFBF00;
+	color: #00FF00;
+}
+h4 {
+	xfont-weight: normal;
+	xcolor: #404040;
+	background: black;
+	color: #00FF00;
+	color: #FFBF00;
+}
+h4.caption {
+	font-style: italic;
+}
+</style>
 </head>
 
-<body xbackground=floline.gif>
+<body>
 
 Mintty is a <a href="http://en.wikipedia.org/wiki/Terminal_emulator">terminal emulator</a> 
 for <a href="http://cygwin.com">Cygwin</a>,
@@ -15,7 +48,7 @@ for <a href="http://cygwin.com">Cygwin</a>,
 <a href="https://github.com/msys2">Msys2</a>, and derived projects,
 and for <a href="https://github.com/mintty/wsltty">WSL</a>.
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 <h3>Features</h3>
 <img align=right src=mintty-logo.svg>
@@ -29,7 +62,8 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
   <li> Extended character attributes support: shadowed, subscript, superscript (terminfo) and overstrike.
   <li> Alternative fonts: simultaneous display of multiple fonts.
   <li> Secondary fonts: script-specific alternative font usage.
-  <li> <a href=#sixel>SIXEL</a> graphics display support.
+  <li> <a href=#image>Image</a> display support.
+  <li> <a href=#sixel>Sixel</a> graphics support.
   <li> <a href=#emoji>Emoji</a> support.
   </ul>
 <dt><i>Terminal input and interaction features</i></dt>
@@ -84,7 +118,7 @@ See the Wiki section about
 Input/Output interaction</a> for hints, especially on the 
 <a target=winpty href=https://github.com/rprichard/winpty>winpty</a> wrapper.
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 <h3>Documentation</h3>
 The Cygwin package ships with a manual page that can be accessed with <code><a href="mintty.1.html">man mintty</a></code>.
@@ -102,7 +136,7 @@ For MSYS (old), select the msys-mintty package in the installer.
 For MSYS2, mintty is installed by default, or it can be installed later 
 with the command <code>pacman -S mintty</code>.
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 <h3>Repository and Download</h3>
 The <a href=https://github.com/mintty/mintty>source code</a>
@@ -118,14 +152,14 @@ for older packages.
 The <a href=https://github.com/mintty/mintty/archive/master.zip>
 current snapshot download</a>.
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 <h3>Donation</h3>
 
 If you feel like you'd like to donate for appreciation of mintty, 
 the <a href=donate.html>donation</a> form offers an opportunity.
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 <h3>Bugs and Enhancements</h3>
 Please report bugs or suggest enhancements via the <a href="https://github.com/mintty/mintty/issues">issue tracker</a>.
@@ -150,7 +184,7 @@ or with the maintainer.
 <li><b>Repository policy:</b> No unsolicited pull requests!
 </ul>
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 <h3>History</h3>
 Mintty is based on code from <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty">PuTTY</a> <a href="http://the.earth.li/~sgtatham/putty/0.60/putty-src.zip">0.60</a> by Simon Tatham and <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/team.html">team</a>.
@@ -159,10 +193,10 @@ Mintty ties directly into Cygwin/MSYS and leaves out PuTTY's networking function
 which is provided by packages such as <a href="http://www.openssh.com">openssh</a> and <a href="http://www.gnu.org/software/inetutils">inetutils</a> instead.
 A number of PuTTY issues have been addressed (see Wiki).
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 <h3>Screenshots</h3>
-<h4>Mintty showing help text in terminal. Options menu opened.</h4>
+<h4 class=caption>Mintty showing help text in terminal. Options menu opened.</h4>
 <img style="position: relative; left: 0;" align=left alt="Mintty help screen shot" src=mintty.png>
 <br>
 <br>
@@ -175,17 +209,26 @@ A number of PuTTY issues have been addressed (see Wiki).
 </table>
 <br clear=all>
 
-<h4>Mintty displaying SIXEL graphics, used with gnuplot:</h4>
+<h4 class=caption>Mintty displaying Sixel graphics, used with gnuplot:</h4>
 <a name=sixel>
 <p>
 <img src=mintty-gnuplot.png
-     alt="Mintty SIXEL graphics display"
-     title="SIXEL support added in mintty 2.6.2">
+     alt="Mintty Sixel graphics display"
+     title="Sixel support added in mintty 2.6.2">
+
+<h4 class=caption>Mintty displaying image file, using the 
+<a href=https://raw.githubusercontent.com/mintty/utils/master/showimg>
+showimg</a> script:</h4>
+<a name=image>
+<p>
+<img src=mintty-terminal.png
+     alt="Mintty image display"
+     title="Image support added in mintty 3.1.0">
 
 <p>
 <table>
 <tr valign=top><td>
-<h4>Localized Options menu:</h4>
+<h4 class=caption>Localized Options menu:</h4>
 <td><img xalign=right
          src=mintty-options-localized.png
          alt="Mintty full user interface localization"
@@ -195,7 +238,7 @@ A number of PuTTY issues have been addressed (see Wiki).
 <p>
 <table>
 <tr valign=top><td>
-<h4>Fancy feature: distinct colour attributes for combining characters:</h4>
+<h4 class=caption>Fancy feature: distinct colour attributes for combining characters:</h4>
 <td><img src=mintty-coloured-combinings.png
          alt="Mintty with distinct colours of combining characters"
          title="distinct combining character colours introduced in mintty 2.7.1">
@@ -204,7 +247,7 @@ A number of PuTTY issues have been addressed (see Wiki).
 <p>
 <table>
 <tr valign=top><td>
-<h4>Fancy feature: alternative fonts as character attributes:</h4>
+<h4 class=caption>Fancy feature: alternative fonts as character attributes:</h4>
 <td><img src=mintty-alternative-fonts.png
          alt="Mintty showing alternative fonts"
          title="alternative fonts introduced in mintty 2.7.8">
@@ -214,7 +257,7 @@ A number of PuTTY issues have been addressed (see Wiki).
 <p>
 <table>
 <tr valign=top><td>
-<h4>Emojis:</h4>
+<h4 class=caption>Emojis:</h4>
 <td><img src=mintty-emojis.png
          alt="Mintty displaying emojis"
          title="emojis since mintty 2.8.4/2.8.5">
@@ -224,7 +267,7 @@ A number of PuTTY issues have been addressed (see Wiki).
 <p>
 <table>
 <tr valign=top><td>
-<h4>Background texture or image:</h4>
+<h4 class=caption>Background texture or image:</h4>
 <td>
 <td rowspan=2><dd>
 <img src=mintty-bg-image.png
@@ -236,6 +279,6 @@ A number of PuTTY issues have been addressed (see Wiki).
          title="background since mintty 2.9.0">
 </table>
 
-<p><table width=100%><tr><td height=14 background=floline.gif></table>
+<p><hr>
 
 </body>
