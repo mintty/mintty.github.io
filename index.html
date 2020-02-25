@@ -99,24 +99,20 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
   <li> Flexible configuration and resource folder options.
   <li> Options stored in a text file. No registry entries.
   <li> Switchable terminal logging, switchable character information.
-  <li> Running in Cygwin, MSYS(2), midipix. Also hosting WSL.
-  <li> Running on Windows XP, Windows 7, Windows 10.
+  <li> Runs in Cygwin, MSYS(2), midipix. Also hosting WSL.
+  <li> Runs on Windows 2000, Windows XP, Windows 7, Windows 10.
   </ul>
 
 <a name=compatibility><h4>Compatibility</h4></a>
 Mintty works on all Windows versions from Windows XP onwards. 
 Similarly to other Cygwin/MSYS terminals based on 
-<a href="http://en.wikipedia.org/wiki/Pseudo_terminal">pseudo terminal</a> ("pty") devices, however, 
-mintty is not a full replacement for the Windows Console window 
-(by default running the Windows Command Processor / command prompt / cmd.exe).
-While native console programs with simple text output usually work fine, 
-interactive programs often have 
-<a href="https://github.com/mintty/mintty/issues/56">problems</a>, 
-although sometimes there are workarounds.
-See the Wiki section about 
+<a href="http://en.wikipedia.org/wiki/Pseudo_terminal">pseudo terminal</a> ("pty") devices.
+Windows console input/output (as used by native Windows command-line programs) 
+has interworking problems with "pty" mode (most notably character set, 
+but also character-wise input and signal processing incompatibilities, see 
 <a href=https://github.com/mintty/mintty/wiki/Tips#inputoutput-interaction-with-alien-programs>
-Input/Output interaction</a> for hints, especially on the 
-<a target=winpty href=https://github.com/rprichard/winpty>winpty</a> wrapper.
+input/output interaction</a>).
+Cygwin 3.1.0 compensates for this issue via the ConPTY API of Windows 10.
 
 <p><hr>
 
