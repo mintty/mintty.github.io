@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Thu Aug  6 15:34:31 2020 -->
+<!-- CreationDate: Sat Aug  8 12:53:57 2020 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,7 +27,7 @@
 <a href="#OPTIONS">OPTIONS</a><br>
 <a href="#USAGE">USAGE</a><br>
 <a href="#CONFIGURATION">CONFIGURATION</a><br>
-<a href="#LIMITATIONS">LIMITATIONS</a><br>
+<a href="#SCOPE AND LIMITATIONS">SCOPE AND LIMITATIONS</a><br>
 <a href="#SEE ALSO">SEE ALSO</a><br>
 <a href="#LICENSE">LICENSE</a><br>
 <a href="#CONTACT">CONTACT</a><br>
@@ -1154,7 +1154,7 @@ Mintty supports Tektronix 4014 mode. It switches to Tek
 emulation on the xterm sequence DECSET 38
 (&lsquo;\[?38h&lsquo;). It is suggested to adjust the window
 size to the Tektronix 4010 resolution and aspect ratio
-before (&lsquo;echo -en &quot;\[4;$780;$1024t&quot;&lsquo;).
+before (&lsquo;echo -en &quot;\e[4;780;1024t&quot;&lsquo;).
 The <b>tek</b> utility available in the mintty utils
 repository
 <i><a href="https://github.com/mintty/utils">https://github.com/mintty/utils</a></i>
@@ -3875,8 +3875,8 @@ switching/launching a session <br>
 &ndash; <b>4</b>: sync. also when window is started
 separately</p>
 
-<h2>LIMITATIONS
-<a name="LIMITATIONS"></a>
+<h2>SCOPE AND LIMITATIONS
+<a name="SCOPE AND LIMITATIONS"></a>
 </h2>
 
 
