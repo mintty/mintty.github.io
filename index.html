@@ -38,6 +38,12 @@ h4.caption {
 	font-style: italic;
 }
 </style>
+<script>
+function set_img (id, src) {
+  var img = document.getElementById (id);
+  img.src = src;
+}
+</script>
 </head>
 
 <body>
@@ -80,6 +86,7 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
   <li> Ability to open files and URLs with Ctrl+click, explicit hyperlinks.
   <li> Fast rendering and scrolling, fast keyboard feedback.
   <li> HTML export and clipboard format support.
+  <li> Image screenshot export.
   </ul>
 <dt><i>Window handling features and desktop integration</i></dt>
   <ul>
@@ -90,7 +97,7 @@ and for <a href="https://github.com/mintty/wsltty">WSL</a>.
   <li> Taskbar tasks (“jump list”) configuration. Task grouping configuration.
   <li> Flexible fullscreen, fullsize and border options.
   <li> Screen and scrollback buffer search.
-  <li> Window transparency, including glass effect.
+  <li> Window transparency.
   <li> Multiple monitor support, changing DPI support.
   </ul>
 <dt><i>Configuration features and system support</i></dt>
@@ -191,6 +198,10 @@ Mintty ties directly into Cygwin/MSYS and leaves out PuTTY's networking function
 which is provided by packages such as <a href="http://www.openssh.com">openssh</a> and <a href="http://www.gnu.org/software/inetutils">inetutils</a> instead.
 A number of PuTTY issues have been addressed (see Wiki).
 
+<h4>Credits</h4>
+People who have contributed significantly to mintty are mentioned on the Wiki 
+<a href=https://github.com/mintty/mintty/wiki/Credits>Credits page</a>.
+
 <p><hr>
 
 <h3>Screenshots</h3>
@@ -216,10 +227,18 @@ A number of PuTTY issues have been addressed (see Wiki).
 
 <a name=tabbar>
 <h4 class=caption>Mintty with tabbar for session switching:</h4>
+Click me!
 <p>
-<img src=mintty-tabbar.png
+<img src=mintty-tab3.png
+     id=tabbar
+     usemap="#tabbarmap"
      alt="Mintty tabbar"
      title="Tabbar session switching added in mintty 3.4.0">
+<map name="tabbarmap">
+    <area shape="rect" coords="005, 40, 256, 70" href='javascript: set_img ("tabbar", "mintty-tab1.png");' />
+    <area shape="rect" coords="257, 40, 503, 70" href='javascript: set_img ("tabbar", "mintty-tab2.png");' />
+    <area shape="rect" coords="507, 40, 754, 70" href='javascript: set_img ("tabbar", "mintty-tab3.png");' />
+</map>
 
 <a name=image>
 <h4 class=caption>Mintty displaying image file:</h4>
