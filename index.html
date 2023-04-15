@@ -34,8 +34,19 @@
     font-family: 'Ubuntu Mono'; font-weight: bold; font-style: italic;
     src: url('f/UbuntuMono-BoldItalic.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'Roboto Mono'; font-style: normal;
+    font-weight: normal bold;
+    src: url('f/RobotoMono[wght].ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto Mono'; font-style: italic;
+    font-weight: normal bold;
+    src: url('f/RobotoMono-Italic[wght].ttf') format('truetype');
+}
 * {
 	font-family: Xanh Mono;
+	xfont-family: Roboto Mono;
 }
 h3, h4 {
 	font-family: Ubuntu Mono;
@@ -174,18 +185,21 @@ settings with their default values are described in the
 <h4>Installation</h4>
 In Cygwin, it is installed as the default "Cygwin Terminal".
 <br>
-For MSYS (old), select the msys-mintty package in the installer.
-(Or from MinGW, install the package with <code>mingw-get install mintty</code>.)
-<br>
 For MSYS2, mintty is installed by default, or it can be installed later 
 with the command <code>pacman -S mintty</code>.
 <br>
 In Git-for-Windows, mintty is installed by default and invoked as "Git Bash".
+<br>
+For MSYS (old), select the msys-mintty package in the installer.
+(Or from MinGW, install the package with <code>mingw-get install mintty</code>.)
 
 <h4>Build</h4>
 Building mintty on cygwin needs packages `gcc-core` and `make`.
 To compile, go into subdirectory `src` and run `make`.
-To install, copy `mintty.exe` from subdirectory `bin` to an appropriate place.
+<br>
+To install just the binary (for testing), copy `mintty.exe` from subdirectory `bin` to an appropriate place.
+To install the binary and resource files locally, run `make install`.
+To install into a packaging directory, run `make DESTDIR=<i>pathto/stage</i> install`.
 
 <p><hr>
 
