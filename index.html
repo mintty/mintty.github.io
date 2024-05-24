@@ -78,10 +78,10 @@ hr {
 	xbackground: #00FF80;
 	border: none;
 }
-table {
+table.table {
 	border-collapse: collapse;
 }
-th, td {
+table.table tr th, table.table tr td {
 	border-style: solid;
 	border-width: 1.5pt;
 	border-color: green;
@@ -176,7 +176,7 @@ but also character-wise input and signal processing incompatibilities, see
 input/output interaction</a>).
 Cygwin 3.1.0 compensates for this issue via the ConPTY API of Windows 10.
 
-<table cellspacing=0 cellpadding=4>
+<table class=table cellspacing=0 cellpadding=4>
 <tr>
 <th>System<th>Build<th>Last version tested
 <tr>
