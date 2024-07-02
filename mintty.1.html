@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Thu Jun 27 00:10:19 2024 -->
+<!-- CreationDate: Sun Jun 30 16:26:35 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -672,7 +672,7 @@ WSL installation.</p>
 <td width="4%">
 
 
-<p><br><b class=h4>&minus;&#732;</b></p></td>
+<p><br><b class=h4>&minus;~</b></p></td>
 <td width="5%"></td>
 <td width="79%">
 
@@ -2614,16 +2614,15 @@ without affecting further instances of mintty.</p>
 files, settings are stored as <i>NAME</i>=<i>VALUE</i>
 pairs, with one per line. By default, they are read from any
 file of <i>/etc/minttyrc</i>, <i>$APPDATA/mintty/config</i>,
-<i>&#732;/.config/mintty/config</i>,
-<i>&#732;/.minttyrc</i>, in this order. Additional
-configuration files can be specified using the
-<b>&minus;c</b>/<b>&minus;&minus;config</b> or
+<i>~/.config/mintty/config</i>, <i>~/.minttyrc</i>, in this
+order. Additional configuration files can be specified using
+the <b>&minus;c</b>/<b>&minus;&minus;config</b> or
 <b>&minus;C</b>/<b>&minus;&minus;loadconfig</b> command line
 options. These are read in order after the default config
 files, with settings in later files overriding those in
 earlier ones. Configuration changes are saved to the last
-writable file read by default or <i>&#732;/.minttyrc</i> if
-none is given, or (with precedence) to a configuration file
+writable file read by default or <i>~/.minttyrc</i> if none
+is given, or (with precedence) to a configuration file
 specified with <b>&minus;c</b>/<b>&minus;&minus;config</b>
 or <b>&minus;&minus;configdir</b>. Individual settings can
 also be specified on the command line using the
@@ -2663,9 +2662,9 @@ resource files are used for colour schemes (option
 localization translation files (option <b>Language</b>,
 subdirectory <i>lang</i>) within the mintty resource
 directories <i>/usr/share/mintty</i>,
-<i>$APPDATA/mintty</i>, <i>&#732;/.config/mintty</i>,
-<i>&#732;/.mintty</i>, or as specified with command line
-option <b>&minus;&minus;configdir</b>.</p>
+<i>$APPDATA/mintty</i>, <i>~/.config/mintty</i>,
+<i>~/.mintty</i>, or as specified with command line option
+<b>&minus;&minus;configdir</b>.</p>
 
 <p style="margin-left:9%; margin-top: 1em">The following
 sections explain the settings on each pane of the options
@@ -2801,11 +2800,11 @@ the following choices:</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="7%">
+<td width="23%">
 
 
 <p><b>Off</b></p></td>
-<td width="72%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -2814,11 +2813,11 @@ the following choices:</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="7%">
+<td width="23%">
 
 
 <p><b>Low</b></p></td>
-<td width="72%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -2827,11 +2826,11 @@ the following choices:</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="7%">
+<td width="23%">
 
 
 <p><b>Medium</b></p></td>
-<td width="72%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -2840,11 +2839,11 @@ the following choices:</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="7%">
+<td width="23%">
 
 
 <p><b>High</b></p></td>
-<td width="72%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -2853,11 +2852,11 @@ the following choices:</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="7%">
+<td width="23%">
 
 
-<p><b>Glass</b></p></td>
-<td width="72%">
+<p><b>Glass</b> <i>&ndash; deprecated</i></p></td>
+<td width="56%">
 </td></tr>
 </table>
 
@@ -3226,7 +3225,7 @@ visually, the respective alternative font specification can
 be preceded with &quot;+&quot;.</p>
 
 <p style="margin-left:21%; margin-top: 1em">Examples:
-<b><br>
+<tt><b><br>
 FontChoice=Hebrew:6;Arabic:7;CJK:5;Han:8;Hangul:9 <br>
 Font6=David <br>
 Font7=Simplified Arabic Fixed <br>
@@ -3236,7 +3235,7 @@ Font9=MingLiU <br>
 FontChoice=PictoSymbols:2;Private:3 <br>
 Font2=DejaVu Sans Mono <br>
 Font3=MesloLGS NF <br>
-FontChoice=Greek:3;|Greek Extended:4</b></p>
+FontChoice=Greek:3;|Greek Extended:4</b></tt></p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -4378,8 +4377,7 @@ characters instead.</p>
 will have the function of a <i>Compose key</i>. Pressing and
 releasing the key, following by a sequence of composing
 keys, will enter a composition of them, according to X11
-compose key data. <br>
-The <b>Off</b> setting disables the Compose key.</p>
+compose key data.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -4390,11 +4388,11 @@ The <b>Off</b> setting disables the Compose key.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="38%">
 
 
 <p><b>Shift</b></p></td>
-<td width="73%">
+<td width="41%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4403,11 +4401,11 @@ The <b>Off</b> setting disables the Compose key.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="38%">
 
 
 <p><b>Ctrl</b></p></td>
-<td width="73%">
+<td width="41%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4416,11 +4414,11 @@ The <b>Off</b> setting disables the Compose key.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="38%">
 
 
 <p><b>Alt</b></p></td>
-<td width="73%">
+<td width="41%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4429,11 +4427,11 @@ The <b>Off</b> setting disables the Compose key.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="38%">
 
 
 <p><b>Super</b></p></td>
-<td width="73%">
+<td width="41%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4442,11 +4440,11 @@ The <b>Off</b> setting disables the Compose key.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="38%">
 
 
 <p><b>Hyper</b></p></td>
-<td width="73%">
+<td width="41%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4455,11 +4453,11 @@ The <b>Off</b> setting disables the Compose key.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="38%">
 
 
-<p><b>Off</b></p></td>
-<td width="73%">
+<p><b>Off</b> <i>&ndash; disables the Compose key</i></p></td>
+<td width="41%">
 </td></tr>
 </table>
 
@@ -4766,8 +4764,7 @@ default</b> (ClickTargetMod=shift)</p>
 can be used to override the click target in application
 mouse mode. With the default settings, clicks are sent to
 the application and Shift needs to be held to trigger window
-actions instead. <br>
-The <b>Off</b> setting disables overriding.</p>
+actions instead.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -4778,11 +4775,11 @@ The <b>Off</b> setting disables overriding.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="32%">
 
 
 <p><b>Shift</b></p></td>
-<td width="73%">
+<td width="47%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4791,11 +4788,11 @@ The <b>Off</b> setting disables overriding.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="32%">
 
 
 <p><b>Ctrl</b></p></td>
-<td width="73%">
+<td width="47%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4804,11 +4801,11 @@ The <b>Off</b> setting disables overriding.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="32%">
 
 
 <p><b>Alt</b></p></td>
-<td width="73%">
+<td width="47%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4817,11 +4814,11 @@ The <b>Off</b> setting disables overriding.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="32%">
 
 
 <p><b>Win</b></p></td>
-<td width="73%">
+<td width="47%">
 </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -4830,11 +4827,11 @@ The <b>Off</b> setting disables overriding.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="6%">
+<td width="32%">
 
 
-<p><b>Off</b></p></td>
-<td width="73%">
+<p><b>Off</b> <i>&ndash; disables overriding</i></p></td>
+<td width="47%">
 </td></tr>
 </table>
 
@@ -5018,9 +5015,10 @@ shown on the right-hand side.</p>
 be pressed together with the arrow-up/down, PgUp/PgDn,
 Home/End, or arrow-left/right keys to access the scrollback
 buffer. <br>
-The default is <b>Shift</b>. The <b>Off</b> setting disables
-scrolling with keyboard shortcuts. A combined numeric value
-selects the respective combination of modifier keys.</p>
+The default is <b>Shift</b>. A combined numeric value
+selects the respective combination of modifier keys. The
+<b>Off</b> setting disables scrolling with keyboard
+shortcuts.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -5489,108 +5487,18 @@ flash the terminal or window; this is a bitmask composed of
 the following values:</p></td></tr>
 </table>
 
-<p style="margin-left:21%;">&bull;</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="21%"></td>
-<td width="1%"></td>
-<td width="1%"></td>
-<td width="67%">
-
-
-<p style="margin-top: 1em"><b>1</b>: Flash the window frame
-(using Windows)</p></td>
-<td width="10%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="21%"></td>
-<td width="1%">
-
-
-<p>&bull;</p></td>
-<td width="1%"></td>
-<td width="67%">
-
-
-<p><b>2</b>: Flash the outer character cells; not
-recommended;</p> </td>
-<td width="10%">
-</td></tr>
-</table>
-
-<p style="margin-left:23%;">will look ragged with
-double-width characters</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="21%"></td>
-<td width="1%">
-
-
-<p style="margin-top: 1em">&bull;</p></td>
-<td width="1%"></td>
-<td width="72%">
-
-
-<p style="margin-top: 1em"><b>4</b>: Flash the whole
-terminal pane (all character cells)</p></td>
-<td width="5%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="21%"></td>
-<td width="1%">
-
-
-<p>&bull;</p></td>
-<td width="1%"></td>
-<td width="72%">
-
-
-<p><b>8</b>: cell flash briefly inverts foreground and
-background;</p> </td>
-<td width="5%">
-</td></tr>
-</table>
-
-<p style="margin-left:23%;">default is to moderately
-brighten the background colour</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="18%"></td>
-<td width="4%">
-
-
-<p style="margin-top: 1em">&bull;</p></td>
-<td width="1%"></td>
-<td width="63%">
-
-
-<p style="margin-top: 1em"><b>12</b>: (combining 4 and 8)
-classic bright full flash</p></td>
-<td width="14%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="18%"></td>
-<td width="4%">
-
-
-<p>&ndash;</p></td>
-<td width="1%"></td>
-<td width="63%"></td>
-<td width="14%">
-</td></tr>
-</table>
-
-<p style="margin-left:21%; margin-top: 1em"><b>Highlight in
-taskbar</b> (BellTaskbar=yes): Change the colour of
-mintty&rsquo;s taskbar entry if the mintty window is not
-active. (Corresponds to the xterm resource
-<b>bellIsUrgent</b>, switchable by an escape sequence.)</p>
+<p style="margin-left:21%;"><b>1</b>: Flash the window
+frame (using Windows) <b><br>
+2</b>: Flash the outer character cells; not recommended;
+<br>
+will look ragged with double-width characters <b><br>
+4</b>: Flash the whole terminal pane (all character cells)
+<b><br>
+8</b>: cell flash briefly inverts foreground and background;
+<br>
+default is to moderately brighten the background colour
+<b><br>
+12</b>: (combining 4 and 8) classic bright full flash</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -5604,10 +5512,24 @@ active. (Corresponds to the xterm resource
 <td width="79%">
 
 
-<p style="margin-top: 1em"><b>Popup on bell</b>
-(BellPopup=no): Popup mintty to desktop foreground.
-(Corresponds to the xterm resource <b>popOnBell</b>,
+<p style="margin-top: 1em"><b>Highlight in taskbar</b>
+(BellTaskbar=yes): Change the colour of mintty&rsquo;s
+taskbar entry if the mintty window is not active.
+(Corresponds to the xterm resource <b>bellIsUrgent</b>,
 switchable by an escape sequence.)</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>Popup on bell</b> (BellPopup=no): Popup mintty to
+desktop foreground. (Corresponds to the xterm resource
+<b>popOnBell</b>, switchable by an escape sequence.)</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -5998,25 +5920,9 @@ process ID. If it contains <b>%</b> placeholders other than
 a single <b>%d</b>, the log file name will be constructed by
 calling strftime(3) on the pattern; note that this is likely
 to fail if a placeholder expands with &quot;/&quot; (%D).
-Example:</p>
+Example: <tt><b><br>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="18%"></td>
-<td width="1%">
-
-
-<p>&ndash;</p></td>
-<td width="2%"></td>
-<td width="43%">
-
-
-
-<p><b>Log=&#732;/mintty.%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S</b>.log</p> </td>
-<td width="36%">
-</td></tr>
-</table>
+Log=~/mintty.%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S.log</b></tt></p>
 
 <p style="margin-left:18%; margin-top: 1em">If the log file
 name is a relative path name, it is relative from the
@@ -6063,31 +5969,21 @@ this case). Examples:</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="18%"></td>
-<td width="1%">
-
-
-<p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="21%"></td>
 <td width="75%">
 
 
 
-<p><b>SaveFilename=&#732;/mintty.%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S</b></p> </td>
+<p><tt><b>SaveFilename=~/mintty.%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S</b></tt></p> </td>
 <td width="4%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
-<td width="1%">
-
-
-<p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="21%"></td>
 <td width="75%">
 
 
 
-<p><b>SaveFilename=$USERPROFILE/Pictures/mintty/%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S</b></p> </td>
+<p><tt><b>SaveFilename=$USERPROFILE/Pictures/mintty/%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S</b></tt></p> </td>
 <td width="4%">
 </td></tr>
 </table>
@@ -6684,14 +6580,15 @@ started from a desktop shortcut, the icon in the
 AppLaunchCmd should be consistent with that one,
 respectively).</p>
 
-<p style="margin-left:18%; margin-top: 1em">Example: mintty
-&minus;o AppID=Mintty.PinTest.1 &minus;o
+<p style="margin-left:18%; margin-top: 1em">Example:
+<tt><b><br>
+mintty &minus;o AppID=Mintty.PinTest.1 &minus;o
 AppName=Mintty.PinTest &minus;o
 AppLaunchCmd=&quot;C:\cygwin\bin\mintty &minus;i
 /cygdrive/c/Windows/System32/calc.exe &minus;&quot; &minus;i
 C:\Windows\System32\calc.exe,0
 &minus;&minus;store&minus;taskbar&minus;properties
-&minus;</p>
+&minus;</b></tt></p>
 
 
 <p style="margin-left:18%; margin-top: 1em"><b>Warning:</b>
@@ -7013,13 +6910,13 @@ not sent)</i></p></td>
 </table>
 
 <p style="margin-left:18%; margin-top: 1em">Examples:
-<b><br>
-Key_Menu=29</b> would make the Menu key send the same escape
-sequence as in xterm <b><br>
-Key_Break=2</b> would turn the Break key into an Insert key
-<b><br>
-Key_Break=_BRK_</b> would assign the simulated terminal line
-Break function</p>
+<tt><b><br>
+Key_Menu=29</b></tt> would make the Menu key send the same
+escape sequence as in xterm <tt><b><br>
+Key_Break=2</b></tt> would turn the Break key into an Insert
+key <tt><b><br>
+Key_Break=_BRK_</b></tt> would assign the simulated terminal
+line Break function</p>
 
 <p style="margin-left:9%;"><br> <b>User-defined shortcuts
 (KeyFunctions=)</b></p>
@@ -7230,7 +7127,7 @@ of the command</p></td></tr>
 
 
 <p><i>number</i> (***): enters the escape sequence
-CSI<i>number</i>[;<i>mod</i>]&#732;</p> </td></tr>
+CSI<i>number</i>[;<i>mod</i>]~</p> </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -7792,7 +7689,7 @@ confirm dialog)</p></td></tr>
 <td width="79%">
 
 
-<p><b>tek&minus;page</b>: Tek mode PAGE key (&#732;soft
+<p><b>tek&minus;page</b>: Tek mode PAGE key (~soft
 reset)</p> </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -8395,8 +8292,9 @@ will compensate for its implicit state change effect.</p>
 <td width="79%">
 
 
-<p style="margin-top: 1em"><b>KeyFunctions=d:`echo &minus;n
-`date``;A+F4:;CA+F12:break;&minus;:&quot;minus&quot;</b>
+<p style="margin-top: 1em"><tt><b>KeyFunctions=d:`echo
+&minus;n
+`date``;A+F4:;CA+F12:break;&minus;:&quot;minus&quot;</b></tt>
 will input the current date on Ctrl+Shift+d, disable window
 closing with Alt+F4, send a BRK on Ctrl+Alt+F12, but likely
 not input &quot;minus&quot; on Ctrl+Shift+minus because
@@ -8413,7 +8311,7 @@ has a Ctrl+_ assignment already</p></td></tr>
 
 
 
-<p><b>KeyFunctions=C+F2:new&minus;tab&minus;cwd;AC+F2:new&minus;window&minus;cwd</b>
+<p><tt><b>KeyFunctions=C+F2:new&minus;tab&minus;cwd;AC+F2:new&minus;window&minus;cwd</b></tt>
 will open a new tab in same directory as current process on
 Control+F2, or as a new window on Alt+Control+F2</p></td></tr>
 <tr valign="top" align="left">
@@ -8426,9 +8324,10 @@ Control+F2, or as a new window on Alt+Control+F2</p></td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=Alt:^[</b> will make Alt send the Esc
-keycode when it is pressed and released on its own, for when
-the Esc key seems too far away from the home row</p></td></tr>
+<p><tt><b>KeyFunctions=Alt:^[</b></tt> will make Alt send
+the Esc keycode when it is pressed and released on its own,
+for when the Esc key seems too far away from the home
+row</p> </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8439,8 +8338,8 @@ the Esc key seems too far away from the home row</p></td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=Alt:menu&minus;text</b> will make Alt
-open the context menu</p></td></tr>
+<p><tt><b>KeyFunctions=Alt:menu&minus;text</b></tt> will
+make Alt open the context menu</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8451,8 +8350,9 @@ open the context menu</p></td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=c:copy;v:paste</b> in combination with
-setting <b>&minus;o&nbsp;CtrlExchangeShift=true</b> will
+<p><tt><b>KeyFunctions=c:copy;v:paste</b></tt> in
+combination with setting
+<tt><b>&minus;o&nbsp;CtrlExchangeShift=true</b></tt> will
 assign copy/paste to &#710;C and &#710;V for Windows
 addicts</p> </td></tr>
 <tr valign="top" align="left">
@@ -8465,9 +8365,9 @@ addicts</p> </td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=C+v:paste</b> in combination with
-setting <b>&minus;o&nbsp;ShootFoot=on</b> will assign paste
-to &#710;V for Windows addicts</p></td></tr>
+<p><tt><b>KeyFunctions=C+v:paste</b></tt> in combination
+with setting <tt><b>&minus;o&nbsp;ShootFoot=on</b></tt> will
+assign paste to &#710;V for Windows addicts</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8478,8 +8378,8 @@ to &#710;V for Windows addicts</p></td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=U+s:&quot;super&quot;</b> will assign
-the text &quot;super&quot; to Super+s</p></td></tr>
+<p><tt><b>KeyFunctions=U+s:&quot;super&quot;</b></tt> will
+assign the text &quot;super&quot; to Super+s</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8490,8 +8390,8 @@ the text &quot;super&quot; to Super+s</p></td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=*CapsLock:super</b> assigns the Super
-modifier to the CapsLock key</p></td></tr>
+<p><tt><b>KeyFunctions=*CapsLock:super</b></tt> assigns the
+Super modifier to the CapsLock key</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8502,9 +8402,9 @@ modifier to the CapsLock key</p></td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=*Menu:29</b> turns the Menu key into an
-F16 function key (xterm default) and applies all modifiers
-to it</p></td></tr>
+<p><tt><b>KeyFunctions=*Menu:29</b></tt> turns the Menu key
+into an F16 function key (xterm default) and applies all
+modifiers to it</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8516,7 +8416,7 @@ to it</p></td></tr>
 
 
 
-<p><b>KeyFunctions=AS+Insert:paste&minus;path;AS+KP_Insert:paste&minus;path</b>
+<p><tt><b>KeyFunctions=AS+Insert:paste&minus;path;AS+KP_Insert:paste&minus;path</b></tt>
 will always try to convert pasted paths to POSIX syntax on
 Alt+Shift+Insert</p> </td></tr>
 <tr valign="top" align="left">
@@ -8529,8 +8429,8 @@ Alt+Shift+Insert</p> </td></tr>
 <td width="79%">
 
 
-<p><b>KeyFunctions=A+Enter:void;A+KP_Enter:</b> will
-disable zooming on Alt+Enter and also disable it on
+<p><tt><b>KeyFunctions=A+Enter:void;A+KP_Enter:</b></tt>
+will disable zooming on Alt+Enter and also disable it on
 Alt+keypad-Enter but enter ESC Return in the latter case</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -8543,53 +8443,11 @@ Alt+keypad-Enter but enter ESC Return in the latter case</p></td></tr>
 
 
 
-<p><b>KeyFunctions=A+Left:switch&minus;prev;A+C+Left:switch&minus;visible&minus;prev;\
-A+Right:switch&minus;next;A+C+Right:switch&minus;visible&minus;next</b></p> </td></tr>
-</table>
-
-<p style="margin-left:21%;">enables window switching with
-[Ctrl+]Alt+Left/Right keys on the &quot;editing keypad&quot;
-(prefix KP_ for the numeric keypad)</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="18%"></td>
-<td width="1%">
-
-
-<p style="margin-top: 1em">&ndash;</p></td>
-<td width="2%"></td>
-<td width="76%">
-
-
-
-<p style="margin-top: 1em"><b>KeyFunctions=S+KP_Prior:scroll_pgup;C+KP_Prior:scroll_pgup;\
-C+KP_Next:scroll_pgdn;S+KP_Next:scroll_pgdn</b></p> </td>
-<td width="3%">
-</td></tr>
-</table>
-
-<p style="margin-left:21%;">enables scrollback scrolling
-with either of Shift or Control modifiers</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="18%"></td>
-<td width="1%">
-
-
-<p style="margin-top: 1em">&ndash;</p></td>
-<td width="2%"></td>
-<td width="78%">
-
-
-
-<p style="margin-top: 1em"><b>KeyFunctions=ScrollLock:toggle&minus;no&minus;scroll</b>
-enables NoScroll key</p></td>
-<td width="1%">
-</td></tr>
+<p><tt><b>KeyFunctions=A+Left:switch&minus;prev;A+C+Left:switch&minus;visible&minus;prev;\
+A+Right:switch&minus;next;A+C+Right:switch&minus;visible&minus;next</b></tt>
+enables window switching with [Ctrl+]Alt+Left/Right keys on
+the &quot;editing keypad&quot; (prefix KP_ for the numeric
+keypad)</p> </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8597,15 +8455,41 @@ enables NoScroll key</p></td>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="78%">
+<td width="79%">
 
 
 
-<p><b>KeyFunctions=C+Left:hor&minus;left&minus;1;C+Right:hor&minus;right&minus;1;\
-CS+Left:hor&minus;out&minus;1;CS+Right:hor&minus;in&minus;1;\
-S+Left:hor&minus;narrow&minus;1;S+Right:hor&minus;wide&minus;1</b></p> </td>
+<p><tt><b>KeyFunctions=S+KP_Prior:scroll_pgup;C+KP_Prior:scroll_pgup;\
+C+KP_Next:scroll_pgdn;S+KP_Next:scroll_pgdn</b></tt> enables
+scrollback scrolling with either of Shift or Control
+modifiers</p> </td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
 <td width="1%">
-</td></tr>
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+
+<p><tt><b>KeyFunctions=ScrollLock:toggle&minus;no&minus;scroll</b></tt>
+enables NoScroll key</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+
+<p><tt><b>KeyFunctions=C+Left:hor&minus;left&minus;1;C+Right:hor&minus;right&minus;1;\
+CS+Left:hor&minus;out&minus;1;CS+Right:hor&minus;in&minus;1;\
+S+Left:hor&minus;narrow&minus;1;S+Right:hor&minus;wide&minus;1</b></tt></p> </td></tr>
 </table>
 
 <p style="margin-left:21%;">enables horizontal scrolling
@@ -9100,7 +8984,7 @@ texture</b> (Background=)</p>
 
 <p style="margin-left:18%;">With this option, an image can
 be chosen as background. With an image file name, absolute
-(with an optional <b>&#732;</b> prefix) or relative to the
+(with an optional <b>~</b> prefix) or relative to the
 current terminal foreground process, the option uses the
 image as a background picture, with variations as indicated
 by a prefix character to the filename: <b><br>
@@ -9363,9 +9247,9 @@ tricky filenames.</p>
 <td width="74%">
 
 
-<p><b>DropCommands=bash:cd
+<p><tt><b>DropCommands=bash:cd
 '%s'&#710;M;mined:&#710;[fo&#710;M%s&#710;M;vim:&#710;[:e
-%s&#710;M</b></p> </td>
+%s&#710;M</b></tt></p> </td>
 <td width="5%">
 </td></tr>
 <tr valign="top" align="left">
@@ -9378,8 +9262,9 @@ tricky filenames.</p>
 <td width="74%">
 
 
-<p><b>DropCommands=&#710;_bash:cd '%s';echo
-$PWD&#710;M&#710;_vim:&#710;[:e %s&#710;M&#710;_</b></p></td>
+<p><tt><b>DropCommands=&#710;_bash:cd '%s';echo
+$PWD&#710;M&#710;_vim:&#710;[:e
+%s&#710;M&#710;_</b></tt></p> </td>
 <td width="5%">
 </td></tr>
 <tr valign="top" align="left">
@@ -9392,7 +9277,7 @@ $PWD&#710;M&#710;_vim:&#710;[:e %s&#710;M&#710;_</b></p></td>
 <td width="74%">
 
 
-<p><b>DropCommands=cmd:cd /D %W&#710;M</b></p></td>
+<p><tt><b>DropCommands=cmd:cd /D %W&#710;M</b></tt></p></td>
 <td width="5%">
 </td></tr>
 </table>
@@ -9460,7 +9345,7 @@ configure!</p>
 
 
 
-<p><b>ExitCommands=bash:exit&#710;M;mined:&#710;[q;emacs:&#710;X&#710;C</b></p> </td>
+<p><tt><b>ExitCommands=bash:exit&#710;M;mined:&#710;[q;emacs:&#710;X&#710;C</b></tt></p> </td>
 <td width="22%">
 </td></tr>
 </table>
@@ -9648,11 +9533,11 @@ text.</p>
 <td width="79%">
 
 
-<p style="margin-top: 1em"><b>UserCommands=Paste
+<p style="margin-top: 1em"><tt><b>UserCommands=Paste
 capital:echo &minus;n &quot;$MINTTY_SELECT&quot; | tr
 'a&minus;z' 'A&minus;Z';Paste small:echo &minus;n
 &quot;$MINTTY_SELECT&quot; | tr 'A&minus;Z'
-'a&minus;z'</b></p> </td></tr>
+'a&minus;z'</b></tt></p> </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -9663,8 +9548,8 @@ capital:echo &minus;n &quot;$MINTTY_SELECT&quot; | tr
 <td width="79%">
 
 
-<p><b>UserCommands=google:cygstart
-https://www.google.de/search?q=&quot;$MINTTY_SELECT&quot;</b></p> </td></tr>
+<p><tt><b>UserCommands=google:cygstart
+https://www.google.de/search?q=&quot;$MINTTY_SELECT&quot;</b></tt></p> </td></tr>
 </table>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
@@ -9765,12 +9650,14 @@ shortcut for menu item selection.</p>
 
 <p>&ndash;</p></td>
 <td width="2%"></td>
-<td width="79%">
+<td width="67%">
 
 
-<p><b>SysMenuFunctions=&amp;Lock
+<p><tt><b>SysMenuFunctions=&amp;Lock
 Title:lock&minus;title;Copy
-&amp;Title:copy&minus;title;&amp;Options...:options;Ne&amp;w:new&minus;window</b></p> </td></tr>
+&amp;Title:copy&minus;title;&amp;Options...:options;Ne&amp;w:new&minus;window</b></tt></p> </td>
+<td width="12%">
+</td></tr>
 </table>
 
 <p style="margin-left:9%;"><br><b class=h4>Session launcher
@@ -9816,8 +9703,9 @@ mintty resource directory).</p>
 <td width="79%">
 
 
-<p><b>SessionCommands=big:&minus;w
-max;Ubuntu:&minus;&minus;WSL=Ubuntu;mybox:ssh mybox</b></p></td></tr>
+<p><tt><b>SessionCommands=big:&minus;w
+max;Ubuntu:&minus;&minus;WSL=Ubuntu;mybox:ssh
+mybox</b></tt></p> </td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -9828,8 +9716,8 @@ max;Ubuntu:&minus;&minus;WSL=Ubuntu;mybox:ssh mybox</b></p></td></tr>
 <td width="79%">
 
 
-<p><b>SessionCommands=mycolours:&minus;C
-&#732;/.minttyrc.mycolours</b></p> </td></tr>
+<p><tt><b>SessionCommands=mycolours:&minus;C
+~/.minttyrc.mycolours</b></tt></p> </td></tr>
 </table>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
@@ -9904,8 +9792,9 @@ WSLtty package if installed.</p>
 <td width="75%">
 
 
-<p><b>TaskCommands=big:&minus;w
-max;Ubuntu:&minus;&minus;WSL=Ubuntu;mybox:ssh mybox</b></p></td>
+<p><tt><b>TaskCommands=big:&minus;w
+max;Ubuntu:&minus;&minus;WSL=Ubuntu;mybox:ssh
+mybox</b></tt></p> </td>
 <td width="4%">
 </td></tr>
 <tr valign="top" align="left">
@@ -9918,8 +9807,8 @@ max;Ubuntu:&minus;&minus;WSL=Ubuntu;mybox:ssh mybox</b></p></td>
 <td width="75%">
 
 
-<p><b>TaskCommands=mycolours:&minus;C
-&#732;/.minttyrc.mycolours</b></p> </td>
+<p><tt><b>TaskCommands=mycolours:&minus;C
+~/.minttyrc.mycolours</b></tt></p> </td>
 <td width="4%">
 </td></tr>
 </table>
