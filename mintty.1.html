@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Tue Sep 24 03:56:40 2024 -->
+<!-- CreationDate: Sat Dec 21 13:52:49 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -71,6 +71,7 @@ Sections:
 <a href="#Terminal">Terminal</a><br>
 <a href="#Command line">Command line</a><br>
 <a href="#&quot;Hidden&quot; settings">&quot;Hidden&quot; settings</a><br>
+<a href="#ENVIRONMENT">ENVIRONMENT</a><br>
 <a href="#SCOPE AND LIMITATIONS">SCOPE AND LIMITATIONS</a><br>
 <a href="#Console issue">Console issue</a><br>
 <a href="#Termcap/terminfo">Termcap/terminfo</a><br>
@@ -522,7 +523,9 @@ With value &quot;P&quot;, mintty reports the cygwin PID and
 the Windows PID of the mintty process (i.e. running the
 terminal). <br>
 With value &quot;w&quot;, mintty reports its Windows window
-id.</p>
+id. <br>
+With value &quot;R&quot;, mintty reports the available
+printers.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note also the
 invocation <i>MINTTY_DEBUG=C mintty ...</i>; it will list
@@ -1448,6 +1451,14 @@ the Options menu, section Keys, or to the CapsLock key. The
 Compose key function can also be assigned to another key
 combination using user-definable function <b>compose</b> in
 setting <b>KeyFunctions</b>.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Details: Mintty
+extracts a list of compose key combinations from the current
+X11 cygwin package, file
+/usr/share/X11/locale/en_US.UTF-8/Compose, where
+&quot;Multi_key&quot; combinations can be resolved using key
+name definitions from /usr/include/X11/keysymdef.h. For the
+X11 version used, see the wiki.</p>
 
 <h3>Keyboard shortcuts
 <a name="Keyboard shortcuts"></a>
@@ -10237,6 +10248,53 @@ configured.</p>
 <td width="54%">
 </td></tr>
 </table>
+
+<h2>ENVIRONMENT
+<a name="ENVIRONMENT"></a>
+</h2>
+
+
+<p style="margin-left:9%; margin-top: 1em">Mintty uses a
+couple of environment variables mainly to steer Alt+F2
+window cloning. Some variable are also useful for explicit
+control or information: <br>
+<br 2> <b>MINTTY_MONITOR</b></p>
+
+<p style="margin-left:18%;">Select monitor for a new
+terminal session started from the shell. Monitor numbers and
+their coordinates within the Windows multi-monitor address
+space can be listed with <b>mintty -Rm</b>.</p>
+
+<p style="margin-left:9%;"><br 2> <b>MINTTY_SHORTCUT</b></p>
+
+<p style="margin-left:18%;">Filename of a desktop shortcut
+from which mintty was started.</p>
+
+<p style="margin-left:9%;"><br 2> <b>MINTTY_DEBUG</b></p>
+
+<p style="margin-left:18%;">C will list usage of config
+files; o, x, h enable interaction debugging for the Options
+dialog.</p>
+
+<p style="margin-left:9%;"><br 2> <b>Process spawning</b></p>
+
+<p style="margin-left:18%;">Variables that pass information
+about terminal environment and contents to external programs
+launched from mintty, e.g. as configured with user-defined
+``-embedded command (via KeyFunctions), via CtxMenuFunctions
+or from user-defined menu entries, as described above:
+MINTTY_SELECT, MINTTY_BUFFER, MINTTY_SCREEN, MINTTY_OUTPUT,
+MINTTY_TITLE, MINTTY_PID, MINTTY_PROG, MINTTY_CWD</p>
+
+<p style="margin-left:9%;"><br 2> <b>New window
+placement</b></p>
+
+<p style="margin-left:18%;">Variables that pass placement
+information when launching new terminal sessions, for
+example with Alt+F2: MINTTY_MONITOR, MINTTY_ROWS,
+MINTTY_COLS, MINTTY_MAXIMIZE, MINTTY_X, MINTTY_Y, MINTTY_DX,
+MINTTY_DY, MINTTY_ICON, MINTTY_TABBAR, MINTTY_CLASS,
+MINTTY_PWD</p>
 
 <h2>SCOPE AND LIMITATIONS
 <a name="SCOPE AND LIMITATIONS"></a>
