@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Sat Dec 21 13:52:49 2024 -->
+<!-- CreationDate: Fri Mar 21 02:47:45 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -866,7 +866,20 @@ as listed in
 <i>https://github.com/mintty/mintty/wiki/CtrlSeqs#bidirectional&minus;rendering</i>.
 They follow the current status of the bidi mode model of the
 <b>BiDi in Terminal Emulators</b> recommendation
-(<i>https://terminal&minus;wg.pages.freedesktop.org/bidi/</i>).</p>
+(<i>https://terminal&minus;wg.pages.freedesktop.org/bidi/</i>).
+<br>
+<br 2> <b>Arabic joining formatters</b></p>
+
+<p style="margin-left:18%;">Mintty considers zero-width
+joining/non-joining formatters for Arabic shaping.</p>
+
+<p style="margin-left:9%;"><br 2> <b>LAM/ALEF single-cell
+joining</b></p>
+
+<p style="margin-left:18%;">Mintty supports a switchable
+terminal mode so that Arabic LAM/ALEF ligatures are rendered
+in a single terminal cell. See
+<i>https://github.com/mintty/mintty/wiki/CtrlSeqs#lamalef&minus;joining</i>.</p>
 
 <h3>Menus
 <a name="Menus"></a>
@@ -1385,10 +1398,11 @@ mintty.</p>
 application activates mouse tracking, mouse events are sent
 to the application rather than being treated as window
 events. This is indicated by the mouse pointer changing from
-an <b>I</b> shape to an arrow. Holding down <b>Shift</b>
-overrides mouse tracking mode and sends mouse events to the
-window instead, so that e.g. text can be selected and the
-context menu can be accessed.</p>
+an <b>I</b> shape to an arrow, or to a haircross pointer if
+the mouse mode reports pixel coordinates. Holding down
+<b>Shift</b> overrides mouse tracking mode and sends mouse
+events to the window instead, so that e.g. text can be
+selected and the context menu can be accessed.</p>
 
 <p style="margin-left:9%; margin-top: 1em">Mintty supports
 5-button mice, handling mouse buttons 4 / 5 like
@@ -2485,10 +2499,10 @@ and location are configurable (setting
 
 
 <p style="margin-left:9%; margin-top: 1em">Mintty supports
-audio output for the warning bell (&#710;G character),
-margin bell, a private escape sequence for explicit output
-of a sound file, and the DECPS tone playing escape sequence.
-A number of settings are available to configure the bell
+audio output for the warning bell (^G character), margin
+bell, a private escape sequence for explicit output of a
+sound file, and the DECPS tone playing escape sequence. A
+number of settings are available to configure the bell
 sound, also in conjunction with the bell volume escape
 sequence (each volume can be assigned a distinct sound
 file). Sound files for the bell sound and the audio sound
@@ -2655,13 +2669,13 @@ configuration value is not valid UTF-8, it is interpreted in
 the system ANSI encoding. (This does not apply to the same
 configuration settings when given on the command-line.) <br>
 Unicode-enabled settings: BellFile, BellFile2..7, ThemeFile,
-Background, Title, ExitTitle, Icon, Log, SaveFilename,
-Language, Font, Font1..10, FontRTL, FontSample, FontChoice,
-TekFont, CopyAsRTFFont, SearchBar, Printer, Answerback,
-SixelClipChars, Class, AppID, AppName, AppLaunchCmd,
-DropCommands, ExitCommands, UserCommands, SessionCommands,
-TaskCommands, KeyFunctions, SysMenuFunctions,
-CtxMenuFunctions, UserCommandsPath.</p>
+ThemeDark, Background, Title, ExitTitle, Icon, Log,
+SaveFilename, Language, Font, Font1..10, FontRTL,
+FontSample, FontChoice, TekFont, CopyAsRTFFont, SearchBar,
+Printer, Answerback, SixelClipChars, Class, AppID, AppName,
+AppLaunchCmd, DropCommands, ExitCommands, UserCommands,
+SessionCommands, TaskCommands, KeyFunctions,
+SysMenuFunctions, CtxMenuFunctions, UserCommandsPath.</p>
 
 <p style="margin-left:9%; margin-top: 1em">Be careful when
 running multiple instances of mintty. If options are saved
@@ -2673,15 +2687,15 @@ the configuration file; mintty versions since 261 preserve
 unknown options and comment lines.</p>
 
 <p style="margin-left:9%; margin-top: 1em">Additional
-resource files are used for colour schemes (option
-<b>ThemeFile</b>, subdirectory <i>themes</i>), wave files
-(option <b>BellFile</b>, subdirectory <i>sounds</i>), and
-localization translation files (option <b>Language</b>,
-subdirectory <i>lang</i>) within the mintty resource
-directories <i>/usr/share/mintty</i>,
-<i>$APPDATA/mintty</i>, <i>~/.config/mintty</i>,
-<i>~/.mintty</i>, or as specified with command line option
-<b>&minus;&minus;configdir</b>.</p>
+resource files are used for colour schemes (options
+<b>ThemeFile</b> and <b>ThemeDark</b>, subdirectory
+<i>themes</i>), wave files (option <b>BellFile</b>,
+subdirectory <i>sounds</i>), and localization translation
+files (option <b>Language</b>, subdirectory <i>lang</i>)
+within the mintty resource directories
+<i>/usr/share/mintty</i>, <i>$APPDATA/mintty</i>,
+<i>~/.config/mintty</i>, <i>~/.mintty</i>, or as specified
+with command line option <b>&minus;&minus;configdir</b>.</p>
 
 <p style="margin-left:9%; margin-top: 1em">The following
 sections explain the settings on each pane of the options
@@ -2802,87 +2816,104 @@ can display the themes available in the mintty configuration
 directories or activate one of them in the current mintty
 window.</p>
 
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="9%"></td>
+<td width="1%">
+
+
+<p style="margin-top: 1em">&ndash;</p></td>
+<td width="2%"></td>
+<td width="88%">
+
+
+<p style="margin-top: 1em"><b>Darkmode Theme</b>
+(ThemeDark=): If this setting is not empty, it is used when
+the system is configured for darkmode.</p></td></tr>
+</table>
+
 <p style="margin-left:9%;"><br 1><b class=h4>Transparency</b>
 (Transparency=off)</p>
 
-<p style="margin-left:18%;">Window transparency level, with
+<p style="margin-left:12%;">Window transparency level, with
 the following choices:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="23%">
 
 
 <p><b>Off</b></p></td>
-<td width="56%">
+<td width="63%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="23%">
 
 
 <p><b>Low</b></p></td>
-<td width="56%">
+<td width="63%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="23%">
 
 
 <p><b>Medium</b></p></td>
-<td width="56%">
+<td width="63%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="23%">
 
 
 <p><b>High</b></p></td>
-<td width="56%">
+<td width="63%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="23%">
 
 
 <p><b>Glass</b> <i>&ndash; deprecated</i></p></td>
-<td width="56%">
+<td width="63%">
 </td></tr>
 </table>
 
-<p style="margin-left:18%; margin-top: 1em">The
+<p style="margin-left:12%; margin-top: 1em">The
 <b>Glass</b> option is deprecated as it was only supported
 in Windows Vista and only if glass colour brightness was set
 black in the Windows control panel.</p>
 
-<p style="margin-left:18%; margin-top: 1em">Numeric
+<p style="margin-left:12%; margin-top: 1em">Numeric
 transparency values ranging from 4 to 254 can be specified
 in config files or on the command line. (Values below 4 are
 multiplied by 16, for backward compatibility reasons.) The
@@ -2890,7 +2921,7 @@ Options dialog also offers a numeric input option with
 slider buttons. Use Shift or Control to adjust their step
 width.</p>
 
-<p style="margin-left:18%; margin-top: 1em">Since 3.6.5,
+<p style="margin-left:12%; margin-top: 1em">Since 3.6.5,
 when overlaying multiple tabs (SessionGeomSync modes),
 mintty manages tab window transparency to avoid cumulation
 of opaqueness.</p>
@@ -2898,73 +2929,73 @@ of opaqueness.</p>
 <p style="margin-left:9%;"><br 1><b class=h4>Opaque when focused</b>
 (OpaqueWhenFocused=no)</p>
 
-<p style="margin-left:18%;">Enable to make the window
+<p style="margin-left:12%;">Enable to make the window
 opaque when it is active (to avoid background distractions
 when working in it).</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Cursor</b>
 (CursorType=line)</p>
 
-<p style="margin-left:18%;">The following cursor types are
+<p style="margin-left:12%;">The following cursor types are
 available:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
-<td width="34%">
+<td width="1%"></td>
+<td width="35%">
 
 
 <p><b>Line</b></p></td>
-<td width="45%">
+<td width="51%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
-<td width="34%">
+<td width="1%"></td>
+<td width="35%">
 
 
 <p><b>Block</b></p></td>
-<td width="45%">
+<td width="51%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
-<td width="34%">
+<td width="1%"></td>
+<td width="35%">
 
 
 <p><b>Box</b> <i>(not in Options dialog)</i></p></td>
-<td width="45%">
+<td width="51%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
-<td width="34%">
+<td width="1%"></td>
+<td width="35%">
 
 
 <p><b>Underscore</b></p></td>
-<td width="45%">
+<td width="51%">
 </td></tr>
 </table>
 
-<p style="margin-left:18%; margin-top: 1em">The line cursor
+<p style="margin-left:12%; margin-top: 1em">The line cursor
 is displayed with the width set in the Accessibility Options
 control panel / Ease of Access Center, mouse panel or
 Optimize visual display.</p>
@@ -2972,13 +3003,13 @@ Optimize visual display.</p>
 <p style="margin-left:9%;"><br 1><b class=h4>Cursor blink</b>
 (CursorBlinks=yes)</p>
 
-<p style="margin-left:18%;">If enabled, the cursor blinks
+<p style="margin-left:12%;">If enabled, the cursor blinks
 at the rate set in the Keyboard control panel.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Visible space indication</b>
 (DispSpace=0, DispClear=0, DispTab=0)</p>
 
-<p style="margin-left:18%;">These settings enable visual
+<p style="margin-left:12%;">These settings enable visual
 indication of blank space. Setting <b>DispSpace</b> affects
 explicitly written space, setting <b>DispClear</b> affects
 unwritten/cleared character cells, setting <b>DispTab</b>
@@ -2989,58 +3020,58 @@ values:</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="69%">
 
 
 <p><b>1</b> bold indication of space</p></td>
-<td width="10%">
+<td width="17%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="69%">
 
 
 <p><b>2</b> dimmed indication of space</p></td>
-<td width="10%">
+<td width="17%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="69%">
 
 
 <p><b>4</b> indication of space in UnderlineColour if
 configured</p> </td>
-<td width="10%">
+<td width="17%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="18%"></td>
+<td width="12%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="2%"></td>
+<td width="1%"></td>
 <td width="69%">
 
 
 <p><b>8</b> brighten background of clear space (DispClear
 only)</p> </td>
-<td width="10%">
+<td width="17%">
 </td></tr>
 </table>
 
@@ -3233,6 +3264,12 @@ Finally, special name <b>Private</b> covers the Private Use
 ranges, which are often used for additional icon symbols
 (e.g. by &quot;Nerd Fonts&quot; or &quot;Powerline&quot;
 fonts). <br>
+With a prefix of &quot;&gt;&quot;, characters mapped from a
+script range to a font will be shifted horizontally as
+derived from the font metrics to adjust CJK characters of a
+smaller font to appear centered in the double-cell space.
+(If used, this prefix must precede a &quot;|&quot; prefix.)
+<br>
 In addition to Unicode scripts, also Unicode blocks can be
 used to specify a secondary font, by a &quot;|&quot; prefix
 to the block name, with block specifications preceding over
@@ -3243,7 +3280,7 @@ be preceded with &quot;+&quot;.</p>
 
 <p style="margin-left:21%; margin-top: 1em">Examples:
 <tt><b><br>
-FontChoice=Hebrew:6;Arabic:7;CJK:5;Han:8;Hangul:9 <br>
+FontChoice=Hebrew:6;Arabic:7;CJK:5;Han:8;&gt;Hangul:9 <br>
 Font6=David <br>
 Font7=Simplified Arabic Fixed <br>
 Font5=+SimSun Regular <br>
@@ -4126,15 +4163,14 @@ auto-repeat is ignored. Auto-repeat can also be switched
 dynamically with DECSET 8. Note that the repeat rate can be
 adjusted dynamically by an escape sequence.</p>
 
-<p style="margin-left:9%;"><br 1><b class=h4>Backarrow sends &#710;H</b>
+<p style="margin-left:9%;"><br 1><b class=h4>Backarrow sends ^H</b>
 (BackspaceSendsBS=no)</p>
 
 <p style="margin-left:18%;">By default, mintty sends
-<b>&#710;?</b> (ASCII DEL) as the keycode for the
-<b>Backspace</b> key. If this option is enabled,
-<b>&#710;H</b> is sent instead. This also changes the
-<b>Ctrl+Backspace</b> code from <b>&#710;H</b> to
-<b>&#710;?</b>.</p>
+<b>^?</b> (ASCII DEL) as the keycode for the
+<b>Backspace</b> key. If this option is enabled, <b>^H</b>
+is sent instead. This also changes the <b>Ctrl+Backspace</b>
+code from <b>^H</b> to <b>^?</b>.</p>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
 This setting also causes the tty setting <b>ERASE
@@ -4151,7 +4187,7 @@ the xterm resource <b>backarrowKey</b>.)</p>
 
 <p style="margin-left:18%;">By default, mintty sends VT100
 Remove as the keycode for the keypad Del key. If this option
-is enabled, <b>&#710;?</b> (ASCII DEL) is sent instead. <br>
+is enabled, <b>^?</b> (ASCII DEL) is sent instead. <br>
 (Corresponds to the xterm resource <b>deleteIsDEL</b>.)</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Ctrl+LeftAlt is AltGr</b>
@@ -4240,8 +4276,8 @@ following flags:</p>
 <td width="74%">
 
 
-<p><b>1</b> Ctrl+Backarrow sends &#710;_,
-Ctrl+Shift+Backarrow sends U+9F</p></td>
+<p><b>1</b> Ctrl+Backarrow sends ^_, Ctrl+Shift+Backarrow
+sends U+9F</p></td>
 <td width="5%">
 </td></tr>
 <tr valign="top" align="left">
@@ -4309,7 +4345,7 @@ mode 2</p></td>
 <td width="74%">
 
 
-<p><b>32</b> Ctrl+Enter sends &#710;&#710;</p></td>
+<p><b>32</b> Ctrl+Enter sends ^^</p></td>
 <td width="5%">
 </td></tr>
 </table>
@@ -4326,7 +4362,8 @@ restores handling of the AltGr keyboard modifier to old
 versions, it is a bitmask combining values; 1 would disable
 a workaround for an incompatibility in the Windows on-screen
 keyboard, 2 would disable revised AltGr handling for
-flexible right-Alt/left-Control sequence variations.</p>
+flexible right-Alt/left-Control sequence variations, 4 would
+disable enforced Control as detected by state.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Support injection of
 external hotkeys</b> (SupportExternalHotkeys=2)</p>
@@ -5305,8 +5342,8 @@ roughly to the combined xterm resources
 (Answerback=)</p>
 
 <p style="margin-left:18%;">The answerback string is sent
-in response to the <b>&#710;E</b> (ENQ) character. By
-default, this is empty. (Corresponds to the xterm resource
+in response to the <b>^E</b> (ENQ) character. By default,
+this is empty. (Corresponds to the xterm resource
 <b>answerbackString</b>.)</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Alternate screen</b>
@@ -5418,9 +5455,9 @@ could spy on your clipboard.</p>
 <p style="margin-left:9%;"><br 2> <b>Bell</b></p>
 
 <p style="margin-left:18%;">The options here determine what
-effects the bell character <b>&#710;G</b> has. Default beep
-and taskbar highlighting are enabled by default. Mintty can
-also play wave sounds or frequency beeps.</p>
+effects the bell character <b>^G</b> has. Default beep and
+taskbar highlighting are enabled by default. Mintty can also
+play wave sounds or frequency beeps.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -6890,7 +6927,7 @@ assigned the traditional terminal line Break function.</p>
 <td width="67%">
 
 
-<p><b>Key_Pause</b>=&#710;] <i>(Ctrl+])</i></p></td>
+<p><b>Key_Pause</b>=^] <i>(Ctrl+])</i></p></td>
 <td width="12%">
 </td></tr>
 <tr valign="top" align="left">
@@ -6903,7 +6940,7 @@ assigned the traditional terminal line Break function.</p>
 <td width="67%">
 
 
-<p><b>Key_Break</b>=&#710;\ <i>(Ctrl+\)</i></p></td>
+<p><b>Key_Break</b>=^\ <i>(Ctrl+\)</i></p></td>
 <td width="12%">
 </td></tr>
 <tr valign="top" align="left">
@@ -6968,11 +7005,11 @@ The value is a series of semicolon-separated, colon-combined
 pairs of key and action descriptors (if a semicolon shall be
 embedded into any of the action descriptors, a
 non-whitespace control character (i.e. none of
-<b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>) can be specified
-as an alternative separator by starting the whole setting
-with it). The definition list can be split over multiple
-lines if a separator is followed by a backslash, newline,
-and optional whitespace indentation. <br>
+<b>^I^J^K^L^M</b>) can be specified as an alternative
+separator by starting the whole setting with it). The
+definition list can be split over multiple lines if a
+separator is followed by a backslash, newline, and optional
+whitespace indentation. <br>
 (Corresponds roughly to the xterm resource
 <b>translations</b>.)</p>
 
@@ -7140,7 +7177,7 @@ string</p> </td></tr>
 <td width="79%">
 
 
-<p><b>&#710;</b><i>char</i>: enters a control char
+<p><b>^</b><i>char</i>: enters a control char
 (&rsquo;@&rsquo;...&rsquo;_&rsquo; or &rsquo;?&rsquo; for
 DEL)</p> </td></tr>
 <tr valign="top" align="left">
@@ -7952,6 +7989,18 @@ disabling</p> </td></tr>
 <td width="79%">
 
 
+<p><b>toggle&minus;lam&minus;alef</b>: toggles LAM/ALEF
+single-cell joining</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
 <p><b>refresh</b>: refresh terminal display</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -8416,8 +8465,7 @@ make Alt open the context menu</p></td></tr>
 <p><tt><b>KeyFunctions=c:copy;v:paste</b></tt> in
 combination with setting
 <tt><b>&minus;o&nbsp;CtrlExchangeShift=true</b></tt> will
-assign copy/paste to &#710;C and &#710;V for Windows
-addicts</p> </td></tr>
+assign copy/paste to ^C and ^V for Windows addicts</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8430,7 +8478,7 @@ addicts</p> </td></tr>
 
 <p><tt><b>KeyFunctions=C+v:paste</b></tt> in combination
 with setting <tt><b>&minus;o&nbsp;ShootFoot=on</b></tt> will
-assign paste to &#710;V for Windows addicts</p></td></tr>
+assign paste to ^V for Windows addicts</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8938,7 +8986,7 @@ option&quot;</b> (TekStrap=0)</p>
 
 <p style="margin-left:18%;">Number of characters appended
 after GIN mode address reports; valid values are 0, 1 (CR)
-and 2 (CR &#710;C). <br>
+and 2 (CR ^C). <br>
 (Corresponds to the xterm resource
 <b>ginTerminator</b>.)</p>
 
@@ -9121,11 +9169,12 @@ string, for example &minus;o ExitTitle=&quot;TERMINATED:
 &quot;.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Mouse pointer styles</b>
-(MousePointer=ibeam, AppMousePointer=arrow)</p>
+(MousePointer=ibeam, AppMousePointer=arrow, <br>
+PixMousePointer=cross)</p>
 
 <p style="margin-left:18%;">This setting defines the mouse
 position indicator (i.e. not the text cursor) from the given
-resource. Note that mintty maintains two different mouse
+resource. Note that mintty maintains three different mouse
 pointer shapes, to distinguish application mouse reporting
 modes. Valid values are Windows predefined cursor names
 (appstarting, arrow, cross, hand, help, ibeam, icon, no,
@@ -9243,6 +9292,13 @@ cloning (Alt+F2)</p></td></tr>
 hovering</p> </td></tr>
 </table>
 
+<p style="margin-left:9%;"><br 1><b class=h4>Maximum image size</b>
+(MaxImageSize=4444444)</p>
+
+<p style="margin-left:18%;">This unsigned integer byte
+count limits the size of graphics data (image or Sixel
+graphics) accepted in the mintty command buffer.</p>
+
 <p style="margin-left:9%;"><br 1><b class=h4>Sixel image clipboard
 substitution</b> (SixelClipChars=<i>space</i>)</p>
 
@@ -9275,11 +9331,11 @@ capital placeholders &quot;%S&quot; or &quot;%W&quot; embeds
 the pasted paths into respective quotes if needed. If a
 semicolon shall be embedded into any of the drop patterns, a
 non-whitespace control character (i.e. none of
-<b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>) can be specified
-as an alternative separator by starting the whole setting
-with it. The definition list can be split over multiple
-lines if a separator is followed by a backslash, newline,
-and optional whitespace indentation.</p>
+<b>^I^J^K^L^M</b>) can be specified as an alternative
+separator by starting the whole setting with it. The
+definition list can be split over multiple lines if a
+separator is followed by a backslash, newline, and optional
+whitespace indentation.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note that the
 setting string must not be terminated with a Windows
@@ -9311,8 +9367,7 @@ tricky filenames.</p>
 
 
 <p><tt><b>DropCommands=bash:cd
-'%s'&#710;M;mined:&#710;[fo&#710;M%s&#710;M;vim:&#710;[:e
-%s&#710;M</b></tt></p> </td>
+'%s'^M;mined:^[fo^M%s^M;vim:^[:e %s^M</b></tt></p></td>
 <td width="5%">
 </td></tr>
 <tr valign="top" align="left">
@@ -9325,9 +9380,8 @@ tricky filenames.</p>
 <td width="74%">
 
 
-<p><tt><b>DropCommands=&#710;_bash:cd '%s';echo
-$PWD&#710;M&#710;_vim:&#710;[:e
-%s&#710;M&#710;_</b></tt></p> </td>
+<p><tt><b>DropCommands=^_bash:cd '%s';echo $PWD^M^_vim:^[:e
+%s^M^_</b></tt></p> </td>
 <td width="5%">
 </td></tr>
 <tr valign="top" align="left">
@@ -9340,7 +9394,7 @@ $PWD&#710;M&#710;_vim:&#710;[:e
 <td width="74%">
 
 
-<p><tt><b>DropCommands=cmd:cd /D %W&#710;M</b></tt></p></td>
+<p><tt><b>DropCommands=cmd:cd /D %W^M</b></tt></p></td>
 <td width="5%">
 </td></tr>
 </table>
@@ -9348,8 +9402,8 @@ $PWD&#710;M&#710;_vim:&#710;[:e
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i> An
 &quot;Enter&quot; key has to be specified with the CR
 character code, control characters need to be embedded
-verbatim (indicated above as &quot;&#710;M&quot; or
-&quot;&#710;[&quot;); there is no escape notation.</p>
+verbatim (indicated above as &quot;^M&quot; or
+&quot;^[&quot;); there is no escape notation.</p>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i> If
 different actions for directories/folders or even different
@@ -9376,11 +9430,11 @@ series of semicolon-separated, colon-combined pairs of
 program name and (control) string. The string is sent to the
 client application. If a semicolon shall be embedded into
 any of the drop patterns, a non-whitespace control character
-(i.e. none of <b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>)
-can be specified as an alternative separator by starting the
-whole setting with it. The definition list can be split over
-multiple lines if a separator is followed by a backslash,
-newline, and optional whitespace indentation.</p>
+(i.e. none of <b>^I^J^K^L^M</b>) can be specified as an
+alternative separator by starting the whole setting with it.
+The definition list can be split over multiple lines if a
+separator is followed by a backslash, newline, and optional
+whitespace indentation.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note that the
 setting string must not be terminated with a Windows
@@ -9408,7 +9462,7 @@ configure!</p>
 
 
 
-<p><tt><b>ExitCommands=bash:exit&#710;M;mined:&#710;[q;emacs:&#710;X&#710;C</b></tt></p> </td>
+<p><tt><b>ExitCommands=bash:exit^M;mined:^[q;emacs:^X^C</b></tt></p> </td>
 <td width="22%">
 </td></tr>
 </table>
@@ -9416,9 +9470,9 @@ configure!</p>
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i> An
 &quot;Enter&quot; key has to be specified with the CR
 character code, control characters need to be embedded
-verbatim (indicated above as &quot;&#710;M&quot;,
-&quot;&#710;[&quot;, &quot;&#710;X&quot;,
-&quot;&#710;C&quot;); there is no escape notation.</p>
+verbatim (indicated above as &quot;^M&quot;, &quot;^[&quot;,
+&quot;^X&quot;, &quot;^C&quot;); there is no escape
+notation.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>User commands</b>
 (UserCommands=) [DEPRECATED, see
@@ -9431,12 +9485,11 @@ item label and command pattern; the command is invoked and
 its standard output is pasted into the terminal, applying
 bracketed-paste mode if enabled. If a semicolon shall be
 embedded into any of the command patterns, a non-whitespace
-control character (i.e. none of
-<b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>) can be specified
-as an alternative separator by starting the whole setting
-with it. The definition list can be split over multiple
-lines if a separator is followed by a backslash, newline,
-and optional whitespace indentation.</p>
+control character (i.e. none of <b>^I^J^K^L^M</b>) can be
+specified as an alternative separator by starting the whole
+setting with it. The definition list can be split over
+multiple lines if a separator is followed by a backslash,
+newline, and optional whitespace indentation.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note that the
 setting string must not be terminated with a Windows
@@ -9557,8 +9610,8 @@ a key shortcut for menu item selection.</p>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
 The previous command can be detected if prompt lines are
-marked with the escape sequence &#710;[[?7711h. See the
-Control Sequences wiki page
+marked with the escape sequence ^[[?7711h. See the Control
+Sequences wiki page
 <i>https://github.com/mintty/mintty/wiki/CtrlSeqs#scroll&minus;markers</i>.</p>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
@@ -9645,8 +9698,7 @@ commands (<b>UserCommands</b>).</p>
 series of semicolon-separated, colon-combined pairs of key
 and action descriptors (if a semicolon shall be embedded
 into any of the action descriptors, a non-whitespace control
-character (i.e. none of
-<b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>) can be specified
+character (i.e. none of <b>^I^J^K^L^M</b>) can be specified
 as an alternative separator by starting the whole setting
 with it). The definition list can be split over multiple
 lines if a separator is followed by a backslash, newline,
@@ -9678,8 +9730,7 @@ functions.</p>
 series of semicolon-separated, colon-combined pairs of key
 and action descriptors (if a semicolon shall be embedded
 into any of the action descriptors, a non-whitespace control
-character (i.e. none of
-<b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>) can be specified
+character (i.e. none of <b>^I^J^K^L^M</b>) can be specified
 as an alternative separator by starting the whole setting
 with it). The definition list can be split over multiple
 lines if a separator is followed by a backslash, newline,
@@ -9734,11 +9785,11 @@ invocation parameter lists; when selecting one of the launch
 names, mintty is invoked with the respective parameters. (If
 a semicolon shall be embedded into any of the command
 patterns, a non-whitespace control character (i.e. none of
-<b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>) can be specified
-as an alternative separator by starting the whole setting
-with it.) The definition list can be split over multiple
-lines if a separator is followed by a backslash, newline,
-and optional whitespace indentation.</p>
+<b>^I^J^K^L^M</b>) can be specified as an alternative
+separator by starting the whole setting with it.) The
+definition list can be split over multiple lines if a
+separator is followed by a backslash, newline, and optional
+whitespace indentation.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note that the
 setting string must not be terminated with a Windows
@@ -9798,12 +9849,11 @@ task names and invocation parameter lists; when selecting
 one of the tasks from the taskbar icon, mintty is invoked
 with the respective parameters. (If a semicolon shall be
 embedded into any of the command patterns, a non-whitespace
-control character (i.e. none of
-<b>&#710;I&#710;J&#710;K&#710;L&#710;M</b>) can be specified
-as an alternative separator by starting the whole setting
-with it.) The definition list can be split over multiple
-lines if a separator is followed by a backslash, newline,
-and optional whitespace indentation.</p>
+control character (i.e. none of <b>^I^J^K^L^M</b>) can be
+specified as an alternative separator by starting the whole
+setting with it.) The definition list can be split over
+multiple lines if a separator is followed by a backslash,
+newline, and optional whitespace indentation.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note that the
 setting string must not be terminated with a Windows
@@ -10296,6 +10346,15 @@ MINTTY_COLS, MINTTY_MAXIMIZE, MINTTY_X, MINTTY_Y, MINTTY_DX,
 MINTTY_DY, MINTTY_ICON, MINTTY_TABBAR, MINTTY_CLASS,
 MINTTY_PWD</p>
 
+<p style="margin-left:9%;"><br 2> <b>Terminal type
+information</b></p>
+
+<p style="margin-left:18%;">In WSL mode, since 3.7.8,
+mintty does not propagate its TERM setting to WSL anymore,
+in order to allow WSL local preferences (often
+xterm-256color). Instead it sets environment variable
+HOSTTERM.</p>
+
 <h2>SCOPE AND LIMITATIONS
 <a name="SCOPE AND LIMITATIONS"></a>
 </h2>
@@ -10360,8 +10419,8 @@ flexible bidi controls according to the draft bidi mode
 model of the <b>BiDi in Terminal Emulators</b>
 recommendation
 (<i>https://terminal&minus;wg.pages.freedesktop.org/bidi/</i>).
-However, emoji rendering does not work properly within
-right-to-left text.</p>
+However, rendering of emoji zwj-joined sequences within
+right-to-left text works only in emoji width mode.</p>
 
 <p style="margin-left:9%; margin-top: 1em">For
 mintty-specific private escape sequences and extensions, see
@@ -10401,7 +10460,7 @@ page
 
 
 <p style="margin-left:9%; margin-top: 1em">Copyright (C)
-2024 Thomas Wolff, Andy Koppe</p>
+2025 Thomas Wolff, Andy Koppe</p>
 
 <p style="margin-left:9%; margin-top: 1em">Mintty is
 released under the terms of the the <i>GNU General Public
