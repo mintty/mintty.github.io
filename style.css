@@ -1,0 +1,9 @@
+/* root and body styles */
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    background-color: light-dark(#fff, #202020);
+    color: light-dark(#000, #ddd);
+}

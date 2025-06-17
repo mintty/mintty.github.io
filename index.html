@@ -4,12 +4,13 @@
 <meta name="description" content="Cygwin Terminal emulator">
 <meta name="keywords" content="terminal emulator, Cygwin Terminal">
 
-<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+<link rel="stylesheet" type="text/css" href="style.css">
 <link rel="shortcut icon" href="terminal-16.png" />
 
 <title>Mintty — Cygwin Terminal emulator</title>
 
 <style>
+/* #region fonts */
 @font-face {
     font-family: 'Xanh Mono'; font-weight: normal; font-style: normal;
     src: url('f/XanhMono-Regular.ttf') format('truetype');
@@ -44,6 +45,7 @@
     font-weight: normal bold;
     src: url('f/RobotoMono-Italic[wght].ttf') format('truetype');
 }
+/* #endregion */
 * {
 	xfont-family: Xanh Mono;
 	xfont-family: Roboto Mono;
@@ -87,7 +89,7 @@ table.table {
 table.table tr th, table.table tr td {
 	border-style: solid;
 	border-width: 1.5pt;
-	border-color: green;
+	border-color: light-dark(green, lightgreen);
 }
 p#introduction {
   font-size: x-large;
@@ -95,16 +97,17 @@ p#introduction {
 .name {
   background-color: #00ffaa23;
   border-radius: 0.3em;
-  color: #09ccb2;
+  color: light-dark(#07a791, #00ffbf);
   padding: 0.15em 0;
 }
 a {
-  color: #006eff;
+  color: light-dark(#0059ce, #00eeff);
   padding: 0.15em 0;
-  transition: 0.3s;
+  transition-property: background-color;
+  transition-duration: 0.3s;
 }
 a:hover {
-  background-color: #006eff23;
+  background-color: light-dark(#006eff23, #00e1ff23);
   border-radius: 0.3em;
 }
 a:visited {
@@ -120,6 +123,26 @@ function set_img (id, src) {
   var img = document.getElementById (id);
   img.src = src;
 }
+
+const html = document.documentElement
+let isDark = window.matchMedia('(prefers-color-scheme: dark)')
+if (isDark.matches) {
+  html.setAttribute('style', 'color-scheme: dark;')
+} else {
+  html.setAttribute('style', 'color-scheme: light;')
+}
+
+function switchTheme() {
+  let style = html.getAttribute('style')
+  switch(style) {
+    case 'color-scheme: light;':
+      html.setAttribute('style', 'color-scheme: dark;')
+      break
+    case 'color-scheme: dark;':
+      html.setAttribute('style', 'color-scheme: light;')
+  }
+  
+}
 </script>
 
 </head>
@@ -130,7 +153,7 @@ function set_img (id, src) {
 for <a href="http://cygwin.com">Cygwin</a>,
 <a href="https://web.archive.org/web/20210101000000*/mingw.org/wiki/MSYS">MSYS</a> or
 <a href="https://github.com/msys2">Msys2</a>, and derived projects,
-and for <a href="https://github.com/mintty/wsltty">WSL</a>.</p>
+and for <a href="https://github.com/mintty/wsltty">WSL</a>.</p> <button onclick="switchTheme()">change theme</button>
 
 <p><hr>
 
