@@ -4,7 +4,7 @@
 <meta name="description" content="Cygwin Terminal emulator">
 <meta name="keywords" content="terminal emulator, Cygwin Terminal">
 
-<link rel="stylesheet" type="text/css" href="style.css">
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 <link rel="shortcut icon" href="terminal-16.png" />
 
 <title>Mintty — Cygwin Terminal emulator</title>
@@ -46,8 +46,8 @@
 }
 * {
 	xfont-family: Xanh Mono;
-	font-family: Roboto Mono;
-	xfont-family: Ubuntu Mono;
+	xfont-family: Roboto Mono;
+	font-family: Ubuntu Mono;
 }
 h3, h4 {
 	font-family: Ubuntu Mono;
@@ -55,6 +55,8 @@ h3, h4 {
 	padding-left: 4;
 	color: black;
 	background: #80FFC0;
+  padding: 0.3em;
+  border-radius: 0.3rem;
 }
 h3 {
 	background: black;
@@ -87,6 +89,30 @@ table.table tr th, table.table tr td {
 	border-width: 1.5pt;
 	border-color: green;
 }
+p#introduction {
+  font-size: x-large;
+}
+.name {
+  background-color: #00ffaa23;
+  border-radius: 0.3em;
+  color: #09ccb2;
+  padding: 0.15em 0;
+}
+a {
+  color: #006eff;
+  padding: 0.15em 0;
+  transition: 0.3s;
+}
+a:hover {
+  background-color: #006eff23;
+  border-radius: 0.3em;
+}
+a:visited {
+  color: #ff00d4;
+}
+a:visited:hover {
+  background-color: #b700ff23;
+}
 </style>
 
 <script>
@@ -100,11 +126,11 @@ function set_img (id, src) {
 
 <body>
 
-Mintty is a <a href="http://en.wikipedia.org/wiki/Terminal_emulator">terminal emulator</a> 
+<p id="introduction"><span class="name">Mintty</span> is a <a href="http://en.wikipedia.org/wiki/Terminal_emulator">terminal emulator</a> 
 for <a href="http://cygwin.com">Cygwin</a>,
 <a href="https://web.archive.org/web/20210101000000*/mingw.org/wiki/MSYS">MSYS</a> or
 <a href="https://github.com/msys2">Msys2</a>, and derived projects,
-and for <a href="https://github.com/mintty/wsltty">WSL</a>.
+and for <a href="https://github.com/mintty/wsltty">WSL</a>.</p>
 
 <p><hr>
 
