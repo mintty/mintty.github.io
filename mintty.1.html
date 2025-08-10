@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Fri Mar 21 02:47:45 2025 -->
+<!-- CreationDate: Sun Aug 10 17:09:39 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -49,6 +49,7 @@ Sections:
 <a href="#Flip screen">Flip screen</a><br>
 <a href="#Switching session">Switching session</a><br>
 <a href="#Virtual Tabs">Virtual Tabs</a><br>
+<a href="#WSL support">WSL support</a><br>
 <a href="#Horizontal scrolling of terminal view and horizontal scrollbar">Horizontal scrolling of terminal view and horizontal scrollbar</a><br>
 <a href="#Closing a session">Closing a session</a><br>
 <a href="#Terminal Break">Terminal Break</a><br>
@@ -75,6 +76,7 @@ Sections:
 <a href="#SCOPE AND LIMITATIONS">SCOPE AND LIMITATIONS</a><br>
 <a href="#Console issue">Console issue</a><br>
 <a href="#Termcap/terminfo">Termcap/terminfo</a><br>
+<a href="#WSL interaction">WSL interaction</a><br>
 <a href="#Screen control features, DEC and xterm compatibility">Screen control features, DEC and xterm compatibility</a><br>
 <a href="#SEE ALSO">SEE ALSO</a><br>
 <a href="#LICENSE">LICENSE</a><br>
@@ -274,8 +276,10 @@ logging can be toggled from the extended context menu.</p>
 but with logging initially disabled, so just specifying a
 potential log file name in case logging is enabled from the
 extended context menu. (Equivalent to combining
-<b>&minus;&minus;log</b> with <b>&minus;o
-Logging=no</b>.)</p>
+<b>&minus;&minus;log</b> with <b>&minus;o Logging=no</b>.)
+Note that since mintty 3.7.9 a default log file name pattern
+is preset, which can be overridden with this setting. See
+option <b>Log</b>.</p>
 
 <p style="margin-left:9%;"><b>&minus;o</b>,
 <b>&minus;&minus;option</b> <i>NAME</i>=<i>VALUE</i></p>
@@ -420,7 +424,8 @@ move can still be done with Ctrl+Alt+click-drag.</p>
 session switching among virtual tabs. This sets
 <b>TabBar=1</b> and <b>SessionGeomSync=</b><i>level</i>.
 Without given value the default window synchronization level
-is 2.</p>
+is 2. See section <b>Virtual Tabs</b> below for further
+features.</p>
 
 
 <p style="margin-left:9%;"><b>&minus;&minus;newtabs</b></p>
@@ -634,20 +639,21 @@ environment variables.</p></td></tr>
 <p style="margin-left:9%;"><b>&minus;&minus;WSL</b>=<i>WSL
 DISTRIBUTION NAME</i></p>
 
-<p style="margin-left:18%;">Run a WSL session, setting
-other parameters as appropriate and involving the
-<i>wslbridge2</i> gateway implicitly (which should be
-installed in /bin for this purpose; fallback to legacy
-wslbridge on older Windows is supported). If the
+<p style="margin-left:18%;">Run a WSL session, set up WSL
+mode for some features and launch WSL, using a gateway as
+selected by option <b>WSLbridge</b>, with proper arguments
+as determined from the selected WSL distribution, in login
+mode if requested and home directory preference if
+requested.</p>
+
+<p style="margin-left:18%; margin-top: 1em">If the
 distribution name is empty, the default WSL installation is
 run; otherwise, it refers to the installed WSL packages as
 listed by the Windows tool <b>wslconfig /l</b> or <b>wsl
 &minus;l</b>. Implies <b>&minus;&minus;wsl</b>,
 <b>&minus;&minus;rootfs=</b>..., and
 <b>&minus;&minus;icon=</b>... if a respective icon file
-exists for the distribution. Also sets up the gateway to
-propagate locale settings LANG, LC_CTYPE, LC_ALL and
-environment variable APPDATA to the WSL session.</p>
+exists for the distribution.</p>
 
 
 <p style="margin-left:9%;"><b>&minus;&minus;WSLmode</b>=<i>WSL
@@ -657,10 +663,7 @@ DISTRIBUTION NAME</i></p>
 given distribution (like <b>&minus;&minus;WSL</b>) but do
 not actually launch WSL which must be achieved with explicit
 invocation of a suitable gateway. The preferred option is
-<b>&minus;&minus;WSL</b> which invokes
-<i>/bin/wslbridge2</i> with proper arguments as determined
-from the selected WSL distribution, in login mode if
-requested and home directory preference if requested.</p>
+<b>&minus;&minus;WSL</b> which also launches WSL.</p>
 
 <p style="margin-left:9%;"><b>&minus;&minus;rootfs</b>
 <i>ROOTFOLDER</i></p>
@@ -862,8 +865,9 @@ direction detection (according to the Unicode Bidi
 algorithm), mintty supports ECMA-48 bidi modes and private
 bidi modes to control switchable bidi behaviour per line and
 partially per paragraph (i.e. within an auto-wrapped line),
-as listed in
-<i>https://github.com/mintty/mintty/wiki/CtrlSeqs#bidirectional&minus;rendering</i>.
+as listed in <i><br>
+
+https://github.com/mintty/mintty/wiki/CtrlSeqs#bidirectional&minus;rendering</i>.
 They follow the current status of the bidi mode model of the
 <b>BiDi in Terminal Emulators</b> recommendation
 (<i>https://terminal&minus;wg.pages.freedesktop.org/bidi/</i>).
@@ -880,6 +884,15 @@ joining</b></p>
 terminal mode so that Arabic LAM/ALEF ligatures are rendered
 in a single terminal cell. See
 <i>https://github.com/mintty/mintty/wiki/CtrlSeqs#lamalef&minus;joining</i>.</p>
+
+<p style="margin-left:9%;"><br 2> <b>Box layout with
+right-to-left text</b></p>
+
+<p style="margin-left:18%;">Bidi autodetection would by
+default spoil boxes formed with Unicode Box Drawing
+characters or with DEC line drawing. Autodetection disabling
+escape sequence DECRST 2501 (&lsquo;\e[?2501l&lsquo;)
+prevents that.</p>
 
 <h3>Menus
 <a name="Menus"></a>
@@ -958,6 +971,14 @@ special characters.</p>
 highlighting is cleared on input by default. This can be
 disabled with option <b>ClearSelectionOnInput=false</b>.</p>
 
+<p style="margin-left:9%; margin-top: 1em">Selection
+highlighting with respect to the clipbaord can be configured
+with option <b>SelectionMode</b>. Default is full selection
+highlighting whenever the selection contents is the same as
+the clipboard contents, dimmed highlighting otherwise. Both
+copy to clipboard actions and external clipboard changes can
+affect the highlighting mode.</p>
+
 <p style="margin-left:9%; margin-top: 1em">The current
 selection size can optionally been indicated with a popup,
 enabled with option <b>SelectionShowSize</b>.</p>
@@ -1018,8 +1039,9 @@ sequence (OSC&nbsp;7).</p>
 
 <p style="margin-left:9%; margin-top: 1em">Mintty also
 supports the OSC&nbsp;8 control to embed explicit hyperlinks
-(similar to links on web pages), see
-<i><a href="https://github.com/mintty/mintty/wiki/CtrlSeqs#hyperlinks">https://github.com/mintty/mintty/wiki/CtrlSeqs#hyperlinks</a></i>
+(similar to links on web pages), see <i><br>
+
+<a href="https://github.com/mintty/mintty/wiki/CtrlSeqs#hyperlinks">https://github.com/mintty/mintty/wiki/CtrlSeqs#hyperlinks</a></i>
 .</p>
 
 <p style="margin-left:9%; margin-top: 1em"><i>Note:</i>
@@ -1233,8 +1255,9 @@ offers another scrolling feature. If prompt lines are marked
 with scroll markers they navigate to the previous/next
 prompt, to provide a better orientation among the output of
 previously invoked commands. See the Control Sequences wiki
-page
-<i>https://github.com/mintty/mintty/wiki/CtrlSeqs#scroll&minus;markers</i>
+page <i><br>
+
+https://github.com/mintty/mintty/wiki/CtrlSeqs#scroll&minus;markers</i>
 for details.</p>
 
 <h3>Flip screen
@@ -1310,6 +1333,63 @@ be reordered with user-definable functions
 tab&minus;(left|right) or interactively via drag-and-drop on
 the tabs.</p>
 
+<p style="margin-left:9%;"><br 2> <b>Tab session
+management</b></p>
+
+<p style="margin-left:18%;">Mintty can be launched with tab
+experience using command-line option
+<b>&minus;&minus;tabbar</b> which can also be added in
+desktop shortcuts, or the following two settings can be
+added to the config file to set up tabbed invocation by
+default: <tt><b><br>
+TabBar=yes <br>
+SessionGeomSync=2</b></tt></p>
+
+<p style="margin-left:18%; margin-top: 1em">Within a tab
+set, <b>Alt+F2</b> will launch the new terminal session in
+the same tab set. See wiki page <i><br>
+
+https://github.com/mintty/mintty/wiki/Tips#tab&minus;session&minus;management</i>
+for more details.</p>
+
+<h3>WSL support
+<a name="WSL support"></a>
+</h3>
+
+
+<p style="margin-left:9%; margin-top: 1em">Mintty supports
+Windows Subsystem for Linux sessions. See command-line
+parameter <b>&minus;&minus;WSL</b> for invocation.</p>
+
+<p style="margin-left:9%; margin-top: 1em">With 3.7.9,
+mintty supports WSL sessions out of the box, using the
+Windows-native wsl.exe gateway to run a WSL session. (For
+older Windows systems, the previous wslbridge gateways can
+be configured with option <b>WSLbridge</b>.) However, for
+fully transparent application access to all terminal
+features, a recent version of the Windows conhost layer is
+needed, as provided by the <i>OpenConsole</i> conhost
+replacement as described in the Tips wiki page
+<i><a href="https://github.com/mintty/mintty/wiki/Tips">https://github.com/mintty/mintty/wiki/Tips</a></i>
+. (This needs to be patched manually into Windows 11 until
+the updated version gets released with Windows 11, or into
+Windows 10.)</p>
+
+<p style="margin-left:9%; margin-top: 1em">Mintty adapts
+certain features for WSL interaction, particularly pathname
+handling for copy/paste. See the wiki Tips page for
+details.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Mintty adjusts
+its icon (including in the session launcher) according to
+the selected WSL distribution.</p>
+
+<p style="margin-left:9%; margin-top: 1em">Mintty can
+adjust taskbar grouping as well as tab set grouping to your
+preferences, using options <b>Class</b> or <b>AppID</b>.
+Special setting <b>AppID=@</b> groups mintty sessions by
+each WSL distribution.</p>
+
 <h3>Horizontal scrolling of terminal view and horizontal scrollbar
 <a name="Horizontal scrolling of terminal view and horizontal scrollbar"></a>
 </h3>
@@ -1375,8 +1455,9 @@ by configuration. Note, however, that a BRK can be ignored
 by configuration of the terminal device (pty) or can be
 ignored by an application by catching the SIGINT signal. For
 more forceful interruption of the terminal client
-application, see the Tips wiki page
-<i>https://github.com/mintty/mintty/wiki/Tips#terminating&minus;the&minus;foreground&minus;program&minus;the&minus;hard&minus;way</i>.</p>
+application, see the Tips wiki page <i><br>
+
+https://github.com/mintty/mintty/wiki/Tips#terminating&minus;the&minus;foreground&minus;program&minus;the&minus;hard&minus;way</i>.</p>
 
 <p style="margin-left:9%; margin-top: 1em">Note that Ctrl+C
 is often configured to raise a SIGINT signal. However, this
@@ -1471,8 +1552,9 @@ extracts a list of compose key combinations from the current
 X11 cygwin package, file
 /usr/share/X11/locale/en_US.UTF-8/Compose, where
 &quot;Multi_key&quot; combinations can be resolved using key
-name definitions from /usr/include/X11/keysymdef.h. For the
-X11 version used, see the wiki.</p>
+name definitions from <br>
+/usr/include/X11/keysymdef.h. For the X11 version used, see
+the wiki.</p>
 
 <h3>Keyboard shortcuts
 <a name="Keyboard shortcuts"></a>
@@ -2440,9 +2522,11 @@ Tek mode text output supports Unicode.</p>
 display of emojis as defined by Unicode using emoji
 presentation, emoji style variation and emoji sequences. The
 option <b>Emojis</b> can choose among sets of emoji graphics
-if deployed in a mintty configuration directory. See the
-Tips wiki page
-<i><a href="https://github.com/mintty/mintty/wiki/Tips#emojis">https://github.com/mintty/mintty/wiki/Tips#emojis</a></i>
+if deployed in a mintty configuration directory, or if
+deployed as common emoji data in <i>/usr/share/emojis</i>.
+See the Tips wiki page <i><br>
+
+<a href="https://github.com/mintty/mintty/wiki/Tips#emojis">https://github.com/mintty/mintty/wiki/Tips#emojis</a></i>
 about deployment of emoji graphics for mintty. Extended flag
 emojis (not listed by Unicode) are supported
 dynamically.</p>
@@ -2510,8 +2594,9 @@ output can be deployed in a resource subdirectory
 <i>sounds</i> or addressed by pathname. Tone playing by
 DECPS is supported via the <i>libao</i> audio output library
 if installed. Setting <b>PlayTone</b> can preselect a tone
-style. See the Control Sequences wiki page
-<i>https://github.com/mintty/mintty/wiki/CtrlSeqs#audio&minus;support</i>.</p>
+style. See the Control Sequences wiki page <i><br>
+
+https://github.com/mintty/mintty/wiki/CtrlSeqs#audio&minus;support</i>.</p>
 
 <h3>Diagnostic support
 <a name="Diagnostic support"></a>
@@ -2527,7 +2612,9 @@ available to enable logging initially (<b>Log=...</b> or
 log file name for later logging (<b>Log=...</b> combined
 with <b>Logging=no</b>, or <b>&minus;&minus;logfile ...</b>
 on the command line). In either case, logging can be toggled
-from the extended context menu.</p>
+from the extended context menu. Since mintty 3.7.9 a default
+log file name pattern is preset. See option <b>Log</b> for
+details.</p>
 
 <p style="margin-left:9%;"><br 2> <b>Character information
 display</b></p>
@@ -2695,7 +2782,10 @@ files (option <b>Language</b>, subdirectory <i>lang</i>)
 within the mintty resource directories
 <i>/usr/share/mintty</i>, <i>$APPDATA/mintty</i>,
 <i>~/.config/mintty</i>, <i>~/.mintty</i>, or as specified
-with command line option <b>&minus;&minus;configdir</b>.</p>
+with command line option <b>&minus;&minus;configdir</b>.
+Emoji icons are additionally looked up in
+<i>/usr/share/emojis</i> to support common emoji data
+installed by distinct packages.</p>
 
 <p style="margin-left:9%; margin-top: 1em">The following
 sections explain the settings on each pane of the options
@@ -2722,7 +2812,7 @@ here opens the colour selection dialog. <br>
 In the settings (config file or command-line options),
 colours are represented as comma-separated RGB triples with
 decimal 8-bit values ranging from 0 to 255. X-style
-hexadecimal colour specifications such as #RRGGBB,
+hexadecimal&nbsp;colour&nbsp;specifications such as #RRGGBB,
 rgb:RR/GG/BB or rgb:RRRR/GGGG/BBBB, cmy:C.C/M.M/Y.Y or
 cmyk:C.C/M.M/Y.Y/K.K can be used as well. Also X11 color
 names are supported.</p>
@@ -2806,8 +2896,9 @@ a filename (like D:/.../solarized&minus;light.minttyrc).</p></td></tr>
 <p style="margin-left:18%; margin-top: 1em">The field can
 also be used as a drag-and-drop target for colour schemes
 downloaded from the Color Scheme Configurator, or for theme
-files from the web. See the Tips wiki page
-<i>https://github.com/mintty/mintty/wiki/Tips#using&minus;colour&minus;schemes&minus;themes</i>
+files from the web. See the Tips wiki page <i><br>
+
+https://github.com/mintty/mintty/wiki/Tips#using&minus;colour&minus;schemes&minus;themes</i>
 about this mechanism.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note: Mintty
@@ -3180,16 +3271,17 @@ this case the bold attribute may not be effective.</p></td></tr>
 weights (Font1Weight= ... Font10Weight=): With these
 settings, up to 10 alternative fonts (and optionally
 weights) can be configured which would then be selectable
-via ECMA-48 SGR character attributes (see Tips wiki page
-<i>https://github.com/mintty/mintty/wiki/Tips#text&minus;attributes&minus;and&minus;rendering</i>).</p> </td></tr>
+via ECMA-48 SGR character attributes (see Tips wiki page</p></td></tr>
 </table>
 
-<p style="margin-left:21%;">They can also be used as
-secondary fonts with option <b>FontChoice</b>. To support
-size alignment of secondary fonts with the main font size,
-alternative font specifications can be preceded with
-&quot;+&quot; which increases their font size slightly.
-<i><br>
+
+<p style="margin-left:21%;"><i>https://github.com/mintty/mintty/wiki/Tips#text&minus;attributes&minus;and&minus;rendering</i>).
+<br>
+They can also be used as secondary fonts with option
+<b>FontChoice</b>. To support size alignment of secondary
+fonts with the main font size, alternative font
+specifications can be preceded with &quot;+&quot; which
+increases their font size slightly. <i><br>
 Note:</i> Font10 has a special preference property; if it is
 not configured, mintty will try to activate it anyway,
 looking for an installed Fraktur or Blackletter font
@@ -3343,15 +3435,18 @@ chooser.</p> </td></tr>
 </table>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Text lines</b>
-(UnderlineManual=false)</p>
+(UnderlineManual=true) [DEPRECATED]</p>
 
-<p style="margin-left:18%;">By enabling this hidden
-setting, text attributes underline, doubly underline,
-strikeout and overline are enforced to be drawn manually.
-The default is to use Windows font variants for strikeout
-and for underline, unless mintty detects that the underlined
-font would not display properly. Note that font smoothing
-may be affected by Windows-generated underline modes.</p>
+<p style="margin-left:18%;">With this hidden setting, text
+attributes underline, doubly underline, strikeout and
+overline are drawn manually. Setting this to false uses
+Windows font variants for strikeout and for underline,
+unless mintty detects that the underlined font would not
+display properly. However, mixing font-generated and manual
+lines (e.g. when some are coloured) results in inconsistent
+placement, so the default was changed to true in 3.7.9. Note
+that font smoothing may be affected by Windows-generated
+underline modes.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Emoji support</b>
 (Emojis=none)</p>
@@ -3504,8 +3599,9 @@ from the font.</p></td>
 <p style="margin-left:18%; margin-top: 1em">Note that all
 style options only work if the respective emoji graphics
 repository is deployed in a mintty resource directory,
-subdirectory <i>emojis</i>. See the Tips wiki page
-<i><a href="https://github.com/mintty/mintty/wiki/Tips#emojis">https://github.com/mintty/mintty/wiki/Tips#emojis</a></i>
+subdirectory <i>emojis</i>. See the Tips wiki page <i><br>
+
+<a href="https://github.com/mintty/mintty/wiki/Tips#emojis">https://github.com/mintty/mintty/wiki/Tips#emojis</a></i>
 for details.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Emoji placement</b>
@@ -4009,11 +4105,13 @@ shell should be changed accordingly.</p>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
 The locale and character set can also be changed with an
-escape sequence, see the Control Sequences wiki page
-<i><a href="https://github.com/mintty/mintty/wiki/CtrlSeqs#locale">https://github.com/mintty/mintty/wiki/CtrlSeqs#locale</a></i>
-. That setting takes precedence; changes from the Options
-menu will silently have no effect unless an escape sequence
-with empty locale is sent to the terminal to restore to
+escape sequence, see the Control Sequences wiki page <i><br>
+
+<a href="https://github.com/mintty/mintty/wiki/CtrlSeqs#locale">https://github.com/mintty/mintty/wiki/CtrlSeqs#locale</a></i>
+. <br>
+That setting takes precedence; changes from the Options menu
+will silently have no effect unless an escape sequence with
+empty locale is sent to the terminal to restore to
 &quot;default&quot;.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Character width handling</b>
@@ -4536,6 +4634,53 @@ controlling mouse support. <br>
 with the mouse is copied to the clipboard as soon as the
 mouse button is released, thus emulating X Window
 behaviour.</p>
+
+<p style="margin-left:9%;"><br 1><b class=h4>Selection highlighting
+mode</b> (SelectionMode=2)</p>
+
+<p style="margin-left:18%;">This option selects how
+selection highlighting is applied with respect to the
+clipboard.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>0</b>: selection highlighting is cleared if clipboard
+gets changed</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>1</b>: cleared by clipboard only if CopyOnSelect is
+enabled</p> </td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>2</b>: local highlighting is dimmed, full
+highlighting if identical with clipboard</p></td></tr>
+</table>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Copy with TABs</b>
 (CopyTab=no)</p>
@@ -5268,8 +5413,9 @@ language/region code</p></td></tr>
 </table>
 
 <p style="margin-left:18%; margin-top: 1em">See the Tips
-wiki page
-<i><a href="https://github.com/mintty/mintty/wiki/Tips#localization">https://github.com/mintty/mintty/wiki/Tips#localization</a></i>
+wiki page <i><br>
+
+<a href="https://github.com/mintty/mintty/wiki/Tips#localization">https://github.com/mintty/mintty/wiki/Tips#localization</a></i>
 about how to configure localization.</p>
 
 <p style="margin-left:18%; margin-top: 1em">Note that
@@ -5772,7 +5918,9 @@ ST).</p> </td>
 for an overview of SGR attributes. <br>
 See
 <i>http://invisible&minus;island.net/xterm/ctlseqs/ctlseqs.txt</i>
-for a full listing of escape control sequences.</p>
+for a full listing of escape control sequences. <br>
+(SuppressWIN corresponds roughly to the xterm resource
+<b>disallowedWindowOps</b>.)</p>
 
 <p style="margin-left:18%; margin-top: 1em">Some of the
 settings have more specific configuration options:</p>
@@ -5981,17 +6129,24 @@ in which case it uses the shortcut icon.</p>
 problems of icon, shortcut, and the Windows taskbar, see the
 note for the &minus;i option above.</p>
 
-<p style="margin-left:9%;"><br 1><b class=h4>Log file</b> (Log=)</p>
+<p style="margin-left:9%;"><br 1><b class=h4>Log file</b>
+(Log=mintty.$h.%Y-%m-%d_%H-%M-%S.$p.log)</p>
 
 <p style="margin-left:18%;">The <b>Log</b> setting can be
 used to specify a log file that all output is copied into.
-If it is empty, as it is by default, no logging is done. If
-it contains <b>%d</b> it will be substituted with the
-process ID. If it contains <b>%</b> placeholders other than
-a single <b>%d</b>, the log file name will be constructed by
-calling strftime(3) on the pattern; note that this is likely
-to fail if a placeholder expands with &quot;/&quot; (%D).
-Example: <tt><b><br>
+If it is empty, no logging is done. Since mintty 3.7.9 a
+default log file name pattern is preset, which creates a log
+file in the working directory from which mintty was started
+as soon as logging is enabled from the extended context
+menu. If it contains a single <b>%d</b> it will be
+substituted with the process ID. If it contains <b>%</b>
+placeholders other than a single <b>%d</b>, the log file
+name will be constructed by calling strftime(3) on the
+pattern; note that this is likely to fail if a placeholder
+expands with &quot;/&quot; (%D). In addition, placeholders
+$h or $p will be replaced with the hostname or the process
+ID respectively. Example, using only a timestamp and placing
+the logs in the home directory: <tt><b><br>
 
 Log=~/mintty.%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S.log</b></tt></p>
 
@@ -6019,12 +6174,13 @@ context menu.</p>
 solution.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Logging initially
-enabled</b> (Logging=yes)</p>
+enabled</b> (Logging=no)</p>
 
-<p style="margin-left:18%;">Disabling this setting disables
-logging initially. If a log file name is specified with
-<b>Log=...</b> and <b>Logging=no</b>, logging can be enabled
-(and toggled) from the extended context menu.</p>
+<p style="margin-left:18%;">This setting selects whether
+logging is enabled initially. If a log file name is
+specified with <b>Log=...</b> and <b>Logging=no</b> (the
+default since mintty 3.7.9), logging can be enabled (and
+toggled) from the extended context menu.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Filenames for screen
 saving</b>
@@ -6359,8 +6515,9 @@ automatic progress detection (according to setting
 ProgressScan). The detected progress will be notified via
 progress bar in one of three levels 1 (green), 2 (yellow), 3
 (red). Note that the progress bar can also be switched or
-even controlled by an escape sequence, see
-<i>https://github.com/mintty/mintty/wiki/CtrlSeqs#progress&minus;bar</i>.</p>
+even controlled by an escape sequence, see <i><br>
+
+https://github.com/mintty/mintty/wiki/CtrlSeqs#progress&minus;bar</i>.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Show automatic progress
 bar</b> (ProgressScan=1)</p>
@@ -6405,8 +6562,9 @@ MSYS2</p> </td></tr>
 <p style="margin-left:18%; margin-top: 1em">The detected
 progress will be notified via progress bar according to
 option ProgressBar or its dynamic setting. Progress scan
-mode can also be switched by an escape sequence, see
-<i>https://github.com/mintty/mintty/wiki/CtrlSeqs#progress&minus;bar</i>.</p>
+mode can also be switched by an escape sequence, see <i><br>
+
+https://github.com/mintty/mintty/wiki/CtrlSeqs#progress&minus;bar</i>.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Single-dash long options</b>
 (ShortLongOpts=false)</p>
@@ -6491,6 +6649,67 @@ normal screen.</p></td></tr>
 
 <p><b>2</b> Enable bidi (default).</p></td></tr>
 </table>
+
+<p style="margin-left:9%;"><br 1><b class=h4>WSL launcher/bridge
+gateway</b> (WSLbridge=0)</p>
+
+<p style="margin-left:18%;">This option selects the launch
+gateway if running WSL via command-line option
+<b>&minus;&minus;WSL</b>:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>2</b> Use <i>/bin/wslbridge2</i>.</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>1</b> Use <i>/bin/wslbridge</i> (the original WSL
+bridge gateway, still needed on older Windows versions.</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>0</b> Use Windows <i>wsl.exe</i>.</p></td></tr>
+</table>
+
+<p style="margin-left:18%; margin-top: 1em">Mintty
+propagates information about the terminal type and the
+character encoding (effective LC_CTYPE setting) in the
+environment variables HOSTTERM and HOSTLANG to the WSL
+session. It does not propagate TERM or locale variables
+directly as they may have values that the WSL environment
+does not support.</p>
+
+<p style="margin-left:18%; margin-top: 1em">The
+deficiencies of the native wsl.exe gateway should be
+compensated by patching an updated Windows <i>conhost</i>
+program into Windows; see <i><br>
+
+https://github.com/mintty/mintty/wiki/Tips#wsl&minus;sessions</i>
+for details.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Application ID</b>
 (AppID=)</p>
@@ -7942,6 +8161,18 @@ status line</p></td></tr>
 <td width="79%">
 
 
+<p><b>toggle&minus;reverse&minus;video</b>: toggles reverse
+video mode</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
 <p><b>toggle&minus;char&minus;info</b>: toggles character
 info display</p></td></tr>
 <tr valign="top" align="left">
@@ -9001,8 +9232,9 @@ Options menu. After the colour scheme is stored to a colour
 scheme file, this setting is not used anymore.</p>
 
 <p style="margin-left:18%; margin-top: 1em">About this
-mechanism see the Tips wiki page
-<i>https://github.com/mintty/mintty/wiki/Tips#using&minus;colour&minus;schemes&minus;themes</i>.</p>
+mechanism see the Tips wiki page <i><br>
+
+https://github.com/mintty/mintty/wiki/Tips#using&minus;colour&minus;schemes&minus;themes</i>.</p>
 
 <p style="margin-left:9%;"><br 2> <b>Selection highlight
 colours</b></p>
@@ -9611,8 +9843,9 @@ a key shortcut for menu item selection.</p>
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
 The previous command can be detected if prompt lines are
 marked with the escape sequence ^[[?7711h. See the Control
-Sequences wiki page
-<i>https://github.com/mintty/mintty/wiki/CtrlSeqs#scroll&minus;markers</i>.</p>
+Sequences wiki page <i><br>
+
+https://github.com/mintty/mintty/wiki/CtrlSeqs#scroll&minus;markers</i>.</p>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
 The PATH environment for the external command can be set up
@@ -10389,6 +10622,26 @@ true-colour capability). However, it sets the environment
 variable <b>TERM</b> to <b>xterm</b> by default in order to
 provide maximal seamless compatibility also in case of
 remote login.</p>
+
+<h3>WSL interaction
+<a name="WSL interaction"></a>
+</h3>
+
+
+<p style="margin-left:9%; margin-top: 1em">With 3.7.9,
+mintty supports WSL sessions out of the box, dropping the
+wslbridge gateways by default, since there were notoriously
+frequent cases where they would have failed to work.
+Launching WSL with the Windows built-in default launcher,
+however, used to be a crook solution as it obstructed
+transparent terminal operation by hooking the Windows
+<i>conhost</i> layer into the workflow. This deficiency can
+now be compensated by patching an updated <i>conhost.exe</i>
+into Windows (see also section WSL support above); see
+<i><br>
+
+https://github.com/mintty/mintty/wiki/Tips#wsl&minus;sessions</i>
+for details.</p>
 
 <h3>Screen control features, DEC and xterm compatibility
 <a name="Screen control features, DEC and xterm compatibility"></a>
