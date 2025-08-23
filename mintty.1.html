@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Sun Aug 10 17:09:39 2025 -->
+<!-- CreationDate: Fri Aug 22 16:30:03 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -2893,15 +2893,32 @@ selection as a colour scheme. The option can also be set to
 a filename (like D:/.../solarized&minus;light.minttyrc).</p></td></tr>
 </table>
 
-<p style="margin-left:18%; margin-top: 1em">The field can
-also be used as a drag-and-drop target for colour schemes
-downloaded from the Color Scheme Configurator, or for theme
-files from the web. See the Tips wiki page <i><br>
+<p style="margin-left:21%; margin-top: 1em">The field can
+also be used as a drag-and-drop target for downloaded colour
+schemes of types .itermcolors, .json, or .minttyrc as for
+example provided by the Color Scheme Designer. From some
+sources, the download link can also be dragged onto the
+field directly, without downloading first. See the Tips wiki
+page <i><br>
 
 https://github.com/mintty/mintty/wiki/Tips#using&minus;colour&minus;schemes&minus;themes</i>
 about this mechanism.</p>
 
-<p style="margin-left:18%; margin-top: 1em">Note: Mintty
+<p style="margin-left:21%; margin-top: 1em">Note: When
+dragging a scheme file onto the field, its value is
+temporarily used to store the scheme contents, and name if
+available, as &quot;scheme:...&quot; data, also persisting
+in the config file. The intention is, however, to Save the
+scheme with a new name, which can be taken from the download
+info if available, or typed into the field, then
+<b>Save</b>. (The setting <b>ColourScheme</b> previously
+used for this purpose is deprecated.) <br>
+Storing the colour scheme creates a file in a config
+directory, subdirectory <i>themes</i>. This fails if a theme
+file of that name already exists, or if no name is available
+in the setting and none was typed in.</p>
+
+<p style="margin-left:21%; margin-top: 1em">Note: Mintty
 also provides the command-line script <b>mintheme</b> which
 can display the themes available in the mintty configuration
 directories or activate one of them in the current mintty
@@ -2910,101 +2927,161 @@ window.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="9%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p style="margin-top: 1em">&ndash;</p></td>
 <td width="2%"></td>
-<td width="88%">
+<td width="79%">
 
 
 <p style="margin-top: 1em"><b>Darkmode Theme</b>
 (ThemeDark=): If this setting is not empty, it is used when
 the system is configured for darkmode.</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>Colour Schemes/Themes configuration</b>
+(ConfigThemes=1): This setting selects how downloaded colour
+schemes are handled and how both regular and darkmode themes
+are configured in the Options menu.</p></td></tr>
 </table>
+
+<p style="margin-left:21%;">&ndash;</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="1%"></td>
+<td width="1%"></td>
+<td width="77%">
+
+
+<p style="margin-top: 1em"><b>0</b> reverts to the old
+method (involving the auxiliary setting <b>ColourScheme</b>
+which is now deprecated)</p></td></tr>
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="1%"></td>
+<td width="77%">
+
+
+<p><b>1</b> enables configuration of both regular and
+darkmode themes, using the same dialog box, switchable by a
+checkbox</p> </td></tr>
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="1%"></td>
+<td width="77%">
+
+
+<p><b>2</b> enables configuration of both regular and
+darkmode themes with two distinct dialog boxes.</p></td></tr>
+</table>
+
+<p style="margin-left:21%; margin-top: 1em">Note that
+actual interactive configuration of a distinct darkmode
+theme in the Options dialog is not yet implemented, use
+config file option ThemeDark to this aim.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Transparency</b>
 (Transparency=off)</p>
 
-<p style="margin-left:12%;">Window transparency level, with
+<p style="margin-left:18%;">Window transparency level, with
 the following choices:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="23%">
 
 
 <p><b>Off</b></p></td>
-<td width="63%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="23%">
 
 
 <p><b>Low</b></p></td>
-<td width="63%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="23%">
 
 
 <p><b>Medium</b></p></td>
-<td width="63%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="23%">
 
 
 <p><b>High</b></p></td>
-<td width="63%">
+<td width="56%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="23%">
 
 
 <p><b>Glass</b> <i>&ndash; deprecated</i></p></td>
-<td width="63%">
+<td width="56%">
 </td></tr>
 </table>
 
-<p style="margin-left:12%; margin-top: 1em">The
+<p style="margin-left:18%; margin-top: 1em">The
 <b>Glass</b> option is deprecated as it was only supported
 in Windows Vista and only if glass colour brightness was set
 black in the Windows control panel.</p>
 
-<p style="margin-left:12%; margin-top: 1em">Numeric
+<p style="margin-left:18%; margin-top: 1em">Numeric
 transparency values ranging from 4 to 254 can be specified
 in config files or on the command line. (Values below 4 are
 multiplied by 16, for backward compatibility reasons.) The
@@ -3012,7 +3089,7 @@ Options dialog also offers a numeric input option with
 slider buttons. Use Shift or Control to adjust their step
 width.</p>
 
-<p style="margin-left:12%; margin-top: 1em">Since 3.6.5,
+<p style="margin-left:18%; margin-top: 1em">Since 3.6.5,
 when overlaying multiple tabs (SessionGeomSync modes),
 mintty manages tab window transparency to avoid cumulation
 of opaqueness.</p>
@@ -3020,73 +3097,73 @@ of opaqueness.</p>
 <p style="margin-left:9%;"><br 1><b class=h4>Opaque when focused</b>
 (OpaqueWhenFocused=no)</p>
 
-<p style="margin-left:12%;">Enable to make the window
+<p style="margin-left:18%;">Enable to make the window
 opaque when it is active (to avoid background distractions
 when working in it).</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Cursor</b>
 (CursorType=line)</p>
 
-<p style="margin-left:12%;">The following cursor types are
+<p style="margin-left:18%;">The following cursor types are
 available:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
-<td width="35%">
+<td width="2%"></td>
+<td width="34%">
 
 
 <p><b>Line</b></p></td>
-<td width="51%">
+<td width="45%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
-<td width="35%">
+<td width="2%"></td>
+<td width="34%">
 
 
 <p><b>Block</b></p></td>
-<td width="51%">
+<td width="45%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
-<td width="35%">
+<td width="2%"></td>
+<td width="34%">
 
 
 <p><b>Box</b> <i>(not in Options dialog)</i></p></td>
-<td width="51%">
+<td width="45%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
-<td width="35%">
+<td width="2%"></td>
+<td width="34%">
 
 
 <p><b>Underscore</b></p></td>
-<td width="51%">
+<td width="45%">
 </td></tr>
 </table>
 
-<p style="margin-left:12%; margin-top: 1em">The line cursor
+<p style="margin-left:18%; margin-top: 1em">The line cursor
 is displayed with the width set in the Accessibility Options
 control panel / Ease of Access Center, mouse panel or
 Optimize visual display.</p>
@@ -3094,13 +3171,13 @@ Optimize visual display.</p>
 <p style="margin-left:9%;"><br 1><b class=h4>Cursor blink</b>
 (CursorBlinks=yes)</p>
 
-<p style="margin-left:12%;">If enabled, the cursor blinks
+<p style="margin-left:18%;">If enabled, the cursor blinks
 at the rate set in the Keyboard control panel.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Visible space indication</b>
 (DispSpace=0, DispClear=0, DispTab=0)</p>
 
-<p style="margin-left:12%;">These settings enable visual
+<p style="margin-left:18%;">These settings enable visual
 indication of blank space. Setting <b>DispSpace</b> affects
 explicitly written space, setting <b>DispClear</b> affects
 unwritten/cleared character cells, setting <b>DispTab</b>
@@ -3111,58 +3188,58 @@ values:</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="69%">
 
 
 <p><b>1</b> bold indication of space</p></td>
-<td width="17%">
+<td width="10%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="69%">
 
 
 <p><b>2</b> dimmed indication of space</p></td>
-<td width="17%">
+<td width="10%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="69%">
 
 
 <p><b>4</b> indication of space in UnderlineColour if
 configured</p> </td>
-<td width="17%">
+<td width="10%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="12%"></td>
+<td width="18%"></td>
 <td width="1%">
 
 
 <p>&ndash;</p></td>
-<td width="1%"></td>
+<td width="2%"></td>
 <td width="69%">
 
 
 <p><b>8</b> brighten background of clear space (DispClear
 only)</p> </td>
-<td width="17%">
+<td width="10%">
 </td></tr>
 </table>
 
@@ -9222,12 +9299,12 @@ and 2 (CR ^C). <br>
 <b>ginTerminator</b>.)</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Downloaded colour scheme</b>
-(ColourScheme=)</p>
+(ColourScheme=) [DEPRECATED]</p>
 
 <p style="margin-left:18%;">This setting is not intended
 for manual configuration. It can store a colour scheme as
-downloaded from the Color Scheme Configurator or from a
-theme file on the web via drag-and-drop to the Theme of the
+downloaded from the Color Scheme Designer or from a theme
+file on the web via drag-and-drop to the Theme of the
 Options menu. After the colour scheme is stored to a colour
 scheme file, this setting is not used anymore.</p>
 
@@ -9535,7 +9612,7 @@ graphics) accepted in the mintty command buffer.</p>
 substitution</b> (SixelClipChars=<i>space</i>)</p>
 
 <p style="margin-left:18%;">Characters to copy to clipboard
-as a substitute for Sixel image graphics, to indicate their
+as a substitute for image graphics, to indicate their
 positions. With an empty value, U+FFFC will be used.
 Double-width characters should not be used here.</p>
 
@@ -10557,7 +10634,8 @@ from which mintty was started.</p>
 
 <p style="margin-left:18%;">C will list usage of config
 files; o, x, h enable interaction debugging for the Options
-dialog.</p>
+dialog; M enables Windows message tracing (in a mintty test
+version compiled with -Ddebug_messages).</p>
 
 <p style="margin-left:9%;"><br 2> <b>Process spawning</b></p>
 
