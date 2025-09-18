@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Fri Aug 22 16:30:03 2025 -->
+<!-- CreationDate: Thu Sep 18 05:32:25 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -2756,8 +2756,8 @@ configuration value is not valid UTF-8, it is interpreted in
 the system ANSI encoding. (This does not apply to the same
 configuration settings when given on the command-line.) <br>
 Unicode-enabled settings: BellFile, BellFile2..7, ThemeFile,
-ThemeDark, Background, Title, ExitTitle, Icon, Log,
-SaveFilename, Language, Font, Font1..10, FontRTL,
+ThemeDark, KeyClick, Background, Title, ExitTitle, Icon,
+Log, SaveFilename, Language, Font, Font1..10, FontRTL,
 FontSample, FontChoice, TekFont, CopyAsRTFFont, SearchBar,
 Printer, Answerback, SixelClipChars, Class, AppID, AppName,
 AppLaunchCmd, DropCommands, ExitCommands, UserCommands,
@@ -2995,11 +2995,6 @@ checkbox</p> </td></tr>
 <p><b>2</b> enables configuration of both regular and
 darkmode themes with two distinct dialog boxes.</p></td></tr>
 </table>
-
-<p style="margin-left:21%; margin-top: 1em">Note that
-actual interactive configuration of a distinct darkmode
-theme in the Options dialog is not yet implemented, use
-config file option ThemeDark to this aim.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Transparency</b>
 (Transparency=off)</p>
@@ -4698,6 +4693,13 @@ compose key data.</p>
 </td></tr>
 </table>
 
+<p style="margin-left:9%;"><br 1><b class=h4>Keyboard click sound</b>
+(KeyClick=)</p>
+
+<p style="margin-left:18%;">This setting can select a sound
+file from a resource subdirectory <i>sounds</i> as a key
+click sound for every key pressed.</p>
+
 <h3>Mouse
 <a name="Mouse"></a>
 </h3>
@@ -6259,6 +6261,14 @@ specified with <b>Log=...</b> and <b>Logging=no</b> (the
 default since mintty 3.7.9), logging can be enabled (and
 toggled) from the extended context menu.</p>
 
+<p style="margin-left:9%;"><br 1><b class=h4>Log filter</b>
+(LogFilter=1)</p>
+
+<p style="margin-left:18%;">Setting 1 filters all control
+sequences out from logging that would request or enable
+terminal reports, so output of log files can be tested
+without causing terminal response.</p>
+
 <p style="margin-left:9%;"><br 1><b class=h4>Filenames for screen
 saving</b>
 (SaveFilename=mintty.%Y&minus;%m&minus;%d_%H&minus;%M&minus;%S)</p>
@@ -6758,7 +6768,7 @@ gateway if running WSL via command-line option
 
 
 <p><b>1</b> Use <i>/bin/wslbridge</i> (the original WSL
-bridge gateway, still needed on older Windows versions.</p></td></tr>
+bridge gateway, still needed on older Windows versions).</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
 <td width="1%">
@@ -8663,6 +8673,18 @@ right narrower by some columns</p></td></tr>
 
 <p><b>hor&minus;wide&minus;mult</b>: horizontal view right
 wider by some columns</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
+<p><b>config&minus;log</b>: display effective config files
+in a message box</p></td></tr>
 </table>
 
 <p style="margin-left:18%; margin-top: 1em"><i>Note
@@ -10025,6 +10047,31 @@ setting string must not be terminated with a Windows
 lineend, as its CR would be considered part of the last
 item; this can be prevented with a final semicolon
 separator.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Example:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="67%">
+
+
+<p><tt><b>CtxMenuFunctions=Reverse
+Video:toggle&minus;reverse&minus;video;\</b></tt></p> </td>
+<td width="12%">
+</td></tr>
+</table>
+
+<p style="margin-left:21%;"><tt><b>Status
+line:toggle&minus;status&minus;line;\ <br>
+New Window here:new&minus;window&minus;cwd;\ <br>
+Show config files:config&minus;log;</b></tt></p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>System menu user
 commands</b> (SysMenuFunctions=)</p>
