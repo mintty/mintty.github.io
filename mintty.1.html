@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.23.0 -->
-<!-- CreationDate: Thu Sep 18 05:32:25 2025 -->
+<!-- CreationDate: Sun Feb 15 11:01:39 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,6 +43,7 @@ Sections:
 <a href="#Full screen">Full screen</a><br>
 <a href="#Default size">Default size</a><br>
 <a href="#Reset">Reset</a><br>
+<a href="#Touch screen support">Touch screen support</a><br>
 <a href="#Scrolling and the scrollback buffer">Scrolling and the scrollback buffer</a><br>
 <a href="#Scroll Lock handling">Scroll Lock handling</a><br>
 <a href="#Searching in the text and scrollback buffer">Searching in the text and scrollback buffer</a><br>
@@ -681,13 +682,12 @@ WSL installation.</p>
 
 <p><b>&minus;~</b></p></td>
 <td width="5%"></td>
-<td width="79%">
+<td width="82%">
 
 
-<p>Start in the user&rsquo;s home directory. Affects also
-WSL sessions.</p></td>
-<td width="3%">
-</td></tr>
+<p>Start in the user&rsquo;s home directory. Also sets
+reference for relative pathnames in option
+<b>SaveFilename</b>. Affects also WSL sessions.</p></td></tr>
 </table>
 
 <p style="margin-left:9%;"><b>&minus;H</b>,
@@ -1161,6 +1161,17 @@ faulty application or printing a binary file will leave the
 terminal in an unusable state. In that case, resetting the
 terminal&rsquo;s state via the <b>Reset</b> command in the
 menu or the <b>Alt+F8</b> keyboard shortcut may help.</p>
+
+<h3>Touch screen support
+<a name="Touch screen support"></a>
+</h3>
+
+
+<p style="margin-left:9%; margin-top: 1em">Mintty supports
+touch screen gestures for scrolling vertically or
+horizontally, also in application mouse modes. Setting
+<b>TouchScroll</b> can configure details. Speed of touch
+scrolling is affected by finger distance.</p>
 
 <h3>Scrolling and the scrollback buffer
 <a name="Scrolling and the scrollback buffer"></a>
@@ -2466,27 +2477,41 @@ turn, unless inhibited by shortcut override mode.</p>
 </h3>
 
 
-<p style="margin-left:9%; margin-top: 1em">The Sixel
-graphics support feature facilitates a range of applications
-that integrate graphic images in the terminal, animated
-graphics, and even video and interactive gaming
-applications.</p>
+<p style="margin-left:9%; margin-top: 1em"><br 2> <b>Embedding
+Sixel pixel graphics</b></p>
 
-<p style="margin-left:9%; margin-top: 1em">An example of
+<p style="margin-left:18%;">The Sixel graphics support
+feature facilitates a range of applications that integrate
+graphic images in the terminal, animated graphics, and even
+video and interactive gaming applications.</p>
+
+<p style="margin-left:18%; margin-top: 1em">An example of
 the benefit of this feature is the output of
 &lsquo;gnuplot&lsquo; with the command <br>
 GNUTERM=sixel gnuplot &minus;e &quot;splot [x=&minus;3:3]
 [y=&minus;3:3] sin(x) * cos(y)&quot;</p>
 
-<p style="margin-left:9%; margin-top: 1em"><i>Note:</i> The
-number of Sixel images displayed on the screen is limited in
-order to prevent Windows handle resource exhaustion. <br>
-<br 2> <b>Image support</b></p>
+<p style="margin-left:18%; margin-top: 1em"><i>Note:</i>
+The number of Sixel images displayed on the screen is
+limited in order to prevent Windows handle resource
+exhaustion.</p>
+
+<p style="margin-left:9%;"><br 2> <b>Displaying ReGIS vector
+graphics</b></p>
+
+<p style="margin-left:18%;">The ReGIS vector graphics
+support feature completes feature compatibility with DEC
+VT340 and xterm. Details on ReGIS features (limitations,
+modifications, extensions) are listed on the wiki page
+<i><a href="https://github.com/mintty/mintty/wiki/ReGIS">https://github.com/mintty/mintty/wiki/ReGIS</a></i>
+.</p>
+
+<p style="margin-left:9%;"><br 2> <b>Image support</b></p>
 
 <p style="margin-left:18%;">In addition to the legacy Sixel
-feature, mintty supports graphic image display (using iTerm2
-controls). Image formats supported comprise PNG, JPEG, GIF,
-TIFF, BMP, Exif.</p>
+and ReGIS graphics features, mintty supports graphic image
+display (using iTerm2 controls). Image formats supported
+comprise PNG, JPEG, GIF, TIFF, BMP, Exif.</p>
 
 <h3>Vector graphics terminal emulation
 <a name="Vector graphics terminal emulation"></a>
@@ -2524,12 +2549,15 @@ presentation, emoji style variation and emoji sequences. The
 option <b>Emojis</b> can choose among sets of emoji graphics
 if deployed in a mintty configuration directory, or if
 deployed as common emoji data in <i>/usr/share/emojis</i>.
+Extended flag emojis (not listed by Unicode) are supported
+dynamically. <br>
+It is suggested to also install package <i>emojis-noto</i>
+to enable graphic emojis display in default configuration.
+<br>
 See the Tips wiki page <i><br>
 
 <a href="https://github.com/mintty/mintty/wiki/Tips#emojis">https://github.com/mintty/mintty/wiki/Tips#emojis</a></i>
-about deployment of emoji graphics for mintty. Extended flag
-emojis (not listed by Unicode) are supported
-dynamically.</p>
+about deployment of emoji graphics for mintty.</p>
 
 <h3>HTML Screen dump
 <a name="HTML Screen dump"></a>
@@ -2758,11 +2786,12 @@ configuration settings when given on the command-line.) <br>
 Unicode-enabled settings: BellFile, BellFile2..7, ThemeFile,
 ThemeDark, KeyClick, Background, Title, ExitTitle, Icon,
 Log, SaveFilename, Language, Font, Font1..10, FontRTL,
-FontSample, FontChoice, TekFont, CopyAsRTFFont, SearchBar,
-Printer, Answerback, SixelClipChars, Class, AppID, AppName,
-AppLaunchCmd, DropCommands, ExitCommands, UserCommands,
-SessionCommands, TaskCommands, KeyFunctions,
-SysMenuFunctions, CtxMenuFunctions, UserCommandsPath.</p>
+FontSample, FontChoice, TekFont, ReGISFont, CopyAsRTFFont,
+SearchBar, Printer, Answerback, ImageClipChars,
+SixelClipChars, Class, AppID, AppName, AppLaunchCmd,
+DropCommands, ExitCommands, UserCommands, SessionCommands,
+TaskCommands, KeyFunctions, SysMenuFunctions,
+CtxMenuFunctions, UserCommandsPath.</p>
 
 <p style="margin-left:9%; margin-top: 1em">Be careful when
 running multiple instances of mintty. If options are saved
@@ -3292,7 +3321,7 @@ are listed</p></td>
 <td width="75%">
 
 
-<p><b>Size</b> (FontHeight=9)</p></td>
+<p><b>Size</b> (FontHeight=9 / FontSize=9)</p></td>
 <td width="4%">
 </td></tr>
 </table>
@@ -3521,7 +3550,7 @@ that font smoothing may be affected by Windows-generated
 underline modes.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Emoji support</b>
-(Emojis=none)</p>
+(Emojis=noto)</p>
 
 <p style="margin-left:18%;">With this option, mintty emoji
 support is enabled and the emojis style is chosen. Mintty
@@ -3671,7 +3700,11 @@ from the font.</p></td>
 <p style="margin-left:18%; margin-top: 1em">Note that all
 style options only work if the respective emoji graphics
 repository is deployed in a mintty resource directory,
-subdirectory <i>emojis</i>. See the Tips wiki page <i><br>
+subdirectory <i>emojis</i>. <br>
+With default setting <i>Emojis=noto</i>, it is suggested to
+also install package <i>emojis-noto</i> to enable graphic
+emojis display. <br>
+See the Tips wiki page <i><br>
 
 <a href="https://github.com/mintty/mintty/wiki/Tips#emojis">https://github.com/mintty/mintty/wiki/Tips#emojis</a></i>
 for details.</p>
@@ -4099,6 +4132,17 @@ transformation in more detail.</p></td></tr>
 graphics for the Box Drawing range U+2500..U+257F, in order
 to achieve unbroken box drawing, as most fonts do not
 include proper box drawing glyphs.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Self-drawn
+graphics may render a bit slower, particularly on slower
+machines. If you disable them to render graphic characters
+from font, it is a good idea to configure a suitable
+secondary font for them: <tt><b><br>
+BoxDrawing=0 <br>
+FontChoice=|Box Drawing:2 <br>
+Font2=DejaVu Sans Mono</b></tt> <br>
+See option <b>FontChoice</b>, also for how to use a
+secondary font to provide &quot;Powerline&quot; symbols.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Locale</b> (Locale=)</p>
 
@@ -4856,6 +4900,16 @@ formatting, when applying the normal copy function.</p>
 Copy as HTML levels are also available as explicit items in
 the extended context menu.</p>
 
+<p style="margin-left:9%;"><br 1><b class=h4>HTML print/export writes
+lines unwrapped</b> (ExportHTMLUnwrapped=true)</p>
+
+<p style="margin-left:18%;">With this setting, HTML print
+(via escape sequence) and HTML export (via user-definable
+function export&minus;html&minus;all) write wrapped lines as
+one unwrapped line. <br>
+The user-definable functions for HTML copy are not affected,
+they were available in variations already.</p>
+
 <p style="margin-left:9%;"><br 1><b class=h4>Clicks place command line
 cursor</b> (ClicksPlaceCursor=no)</p>
 
@@ -5175,7 +5229,7 @@ default width and height to the window&rsquo;s current
 size.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Reflow / Line rewrap when
-terminal is resized</b> (RewrapOnResize=no)</p>
+terminal is resized</b> (RewrapOnResize=yes)</p>
 
 <p style="margin-left:18%;">This setting enables mintty to
 automatically rebreak and rewrap lines that had been
@@ -5554,9 +5608,10 @@ others, which is why plain <b>xterm</b> is the default.</p>
 
 <p style="margin-left:18%; margin-top: 1em">The
 <b>vt340</b> setting facilitates a terminal ID indication
-corresponding to the Sixel graphics feature. However,
-particularly the <i>gnuplot</i> tool uses a dedicated
-variable (<b>GNUTERM</b>) to trigger its usage.</p>
+corresponding to the Sixel and ReGIS graphics features.
+However, particularly the <i>gnuplot</i> tool uses a
+dedicated variable (<b>GNUTERM</b>) to trigger output
+mode.</p>
 
 <p style="margin-left:18%; margin-top: 1em">(Corresponds
 roughly to the combined xterm resources
@@ -6278,7 +6333,11 @@ location and filename pattern (which is expanded with the
 strftime(3) function) for .html and .png screen dumps. An
 initial home prefix or environment variable prefix is
 expanded (POSIX path and variable syntax needs to be used in
-this case). Examples:</p>
+this case). WSL paths are supported, both for an explicit ~
+prefix and for relative filenames with home option
+<b>&minus;~</b> referring to the respective user home.</p>
+
+<p style="margin-left:18%; margin-top: 1em">Examples:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -8284,6 +8343,18 @@ HTML file</p></td></tr>
 <td width="79%">
 
 
+<p><b>export&minus;html&minus;all</b> (*): exports
+scrollback and screen as an HTML file</p></td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="79%">
+
+
 <p><b>print&minus;screen</b>: print screen contents</p></td></tr>
 <tr valign="top" align="left">
 <td width="18%"></td>
@@ -9320,6 +9391,26 @@ and 2 (CR ^C). <br>
 (Corresponds to the xterm resource
 <b>ginTerminator</b>.)</p>
 
+<p style="margin-left:9%;"><br 1><b class=h4>ReGIS font</b>
+(ReGISFont=)</p>
+
+<p style="margin-left:18%;">For ReGIS graphics, a dedicated
+font can be selected. The terminal default font is used
+otherwise.</p>
+
+<p style="margin-left:9%;"><br 1><b class=h4>ReGIS tension</b>
+(ReGISTension=0.6)</p>
+
+<p style="margin-left:18%;">This setting can adjust the
+&quot;tension&quot; of ReGIS interpolated curves.</p>
+
+<p style="margin-left:9%;"><br 1><b class=h4>ReGIS background grid</b>
+(ReGISGrid=0)</p>
+
+<p style="margin-left:18%;">Set this for example to
+ReGISGrid=100 to draw a background grid to help check or
+debug ReGIS programs.</p>
+
 <p style="margin-left:9%;"><br 1><b class=h4>Downloaded colour scheme</b>
 (ColourScheme=) [DEPRECATED]</p>
 
@@ -9548,6 +9639,79 @@ scrollback scrolling as well as to mousewheel reporting but
 not to mouse tracking reports. The default is to take the
 value from a system setting, typically 3.</p>
 
+<p style="margin-left:9%;"><br 1><b class=h4>Touch scrolling support</b>
+(TouchScroll=1) [EXPERIMENTAL]</p>
+
+<p style="margin-left:18%;">This setting may disable
+interpretation of the Windows PAN gesture for touch screens
+(0). It may also enable additional features of it by setting
+a bitmask, adding the following values:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="61%">
+
+
+<p><b>2</b> single finger vertical panning</p></td>
+<td width="18%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="61%">
+
+
+<p><b>4</b> single finger horizontal panning</p></td>
+<td width="18%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="61%">
+
+
+<p><b>8</b> perpendicular gutter for pan detection</p></td>
+<td width="18%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="18%"></td>
+<td width="1%">
+
+
+<p>&ndash;</p></td>
+<td width="2%"></td>
+<td width="61%">
+
+
+<p><b>16</b> apply inertia to slow down panning
+gracefully</p> </td>
+<td width="18%">
+</td></tr>
+</table>
+
+<p style="margin-left:18%; margin-top: 1em">The effect of
+these feature aspects on interactive behaviour is not
+thoroughly tested, feedback is appreciated. <br>
+Note that inertia seems to be applied already by default.
+The effect of the additional inertia flag is unclear. <br>
+Note that horizontal panning is only effective in connection
+with the <b>horbar</b> command-line option.</p>
+
 <p style="margin-left:9%;"><br 1><b class=h4>Disable Shift-coupled
 implicit font zooming</b> (ZoomFontWithWindow=yes)</p>
 
@@ -9627,16 +9791,23 @@ hovering</p> </td></tr>
 (MaxImageSize=4444444)</p>
 
 <p style="margin-left:18%;">This unsigned integer byte
-count limits the size of graphics data (image or Sixel
-graphics) accepted in the mintty command buffer.</p>
+count limits the size of graphics data (image, Sixel or
+ReGIS graphics) accepted in the mintty command buffer.</p>
 
-<p style="margin-left:9%;"><br 1><b class=h4>Sixel image clipboard
-substitution</b> (SixelClipChars=<i>space</i>)</p>
+<p style="margin-left:9%;"><br 1><b class=h4>Image cell clipboard
+substitution</b> (ImageClipChars=<i>space</i>)</p>
 
 <p style="margin-left:18%;">Characters to copy to clipboard
 as a substitute for image graphics, to indicate their
 positions. With an empty value, U+FFFC will be used.
-Double-width characters should not be used here.</p>
+Double-width characters should not be used here. Applies to
+all image and graphics formats.</p>
+
+<p style="margin-left:9%;"><br 1><b class=h4>Sixel image clipboard
+substitution</b> (SixelClipChars=<i>space</i>)
+[DEPRECATED]</p>
+
+<p style="margin-left:18%;">Alias of ImageClipChars.</p>
 
 <p style="margin-left:9%;"><br 1><b class=h4>Drag-and-drop
 application-targetted commands</b> (DropCommands=)</p>
@@ -10790,12 +10961,12 @@ support, italic, overline, strikeout, rapid blinking,
 alternative fonts) and additional rendering attributes
 (underline styles and colours, superscript and subscript,
 shadowed and overstrike). Mintty provides Sixel graphics,
-image support according to the iTerm2 protocol (including
-png, jpeg, gif output), Emoji support, and Bidi reordering
-according to the Unicode Bidi Algorithm UBA, amended with
-flexible bidi controls according to the draft bidi mode
-model of the <b>BiDi in Terminal Emulators</b>
-recommendation
+ReGIS vector graphics, image support according to the iTerm2
+protocol (including png, jpeg, gif output), Emoji support,
+and Bidi reordering according to the Unicode Bidi Algorithm
+UBA, amended with flexible bidi controls according to the
+draft bidi mode model of the <b>BiDi in Terminal
+Emulators</b> recommendation
 (<i>https://terminal&minus;wg.pages.freedesktop.org/bidi/</i>).
 However, rendering of emoji zwj-joined sequences within
 right-to-left text works only in emoji width mode.</p>
@@ -10838,7 +11009,7 @@ page
 
 
 <p style="margin-left:9%; margin-top: 1em">Copyright (C)
-2025 Thomas Wolff, Andy Koppe</p>
+2026 Thomas Wolff, Andy Koppe</p>
 
 <p style="margin-left:9%; margin-top: 1em">Mintty is
 released under the terms of the the <i>GNU General Public
